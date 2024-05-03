@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import logo from './yt-logo.png';
-import userIcon from './user_img.png'; // Example user icon
+import logo from './bg-yt-logo.png';
+import userIcon from './userimg.png'; // Example user icon
 import './index.css'; // Import the CSS file for the Navbar component
 
 const Navbar = () => {
@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className={`collapse navbar-collapse ${sidebarOpen ? 'show' : ''}`}>
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <form className="form-inline my-2 my-lg-0 mx-auto">
+            <form className="form-style" >
               <input
                 className="form-control mr-sm-2"
                 type="search"
@@ -45,7 +45,11 @@ const Navbar = () => {
           </li>
         </ul>
         <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
+            <li className='nav-item'>
+            <p className='user-name'>User@gmail.com</p>
+            </li>
+          <li className="nav-item" style={{margin:'14px'}}>
+            
             <img src={userIcon} alt="user icon" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
           </li>
         </ul>
@@ -59,7 +63,7 @@ const Navbar = () => {
         <div className="sidebar active">
           <div className="sd-header">
             <h4 className="mb-0">Sidebar Header</h4>
-            <div className="btn btn-primary" onClick={toggleSidebar}><i className="fa fa-times"></i></div>
+            <div className="btn btn-primary" onClick={toggleSidebar}><i className="fa fa-times">X</i></div>
           </div>
           <div className="sd-body">
             <ul>

@@ -84,5 +84,29 @@ body {
     text-decoration: none;
 }
 
+.btn.btn-outline-light {
+  color: #f70505;
+  background-color: #202225;
+  padding: 10px;
+  margin: 10px;
+}
+
+.form-style{
+  text-align: center;
+  display: inline-flex;
+  align-content: center;
+}
+
+.user-name{
+  color: #fff;
+  margin: 20px;
+}
+
+.navbar-brand{
+  padding-right: 425px;
+  border-radius: 5px;
+}
+
+
 
 
