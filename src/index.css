@@ -1,4 +1,3 @@
-
 @import url(https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css);
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 
@@ -6,107 +5,121 @@ body {
     background-color: #202225;
     font-family: "Rubik", sans-serif;
 }
-/* ---Sidebar css */
-.text-primary{
-  color: #f70505!important;
+/* Sidebar CSS */
+.sidebar {
+  width: 280px;
+  min-height: 100vh;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  right: -280px; /* Position the sidebar initially outside the viewport on the right */
+  transition: right 0.5s; /* Use the right property for transition */
 }
+
+.sidebar.active {
+  right: 0; /* Slide the sidebar into view from the right */
+}
+
+/* Adjust the width of the navbar when the sidebar is active */
+.navbar {
+  transition: margin-right 0.5s; /* Add margin-right transition */
+}
+
+/* Adjust the margin-right of the navbar when the sidebar is active */
+.navbar.sidebar-active {
+  margin-right: 280px; /* Add sidebar width to margin-right */
+}
+
+
+
+/* Other styles remain unchanged */
+.text-primary {
+    color: #f70505!important;
+}
+
 .btn-primary {
     border-color: #f70505 !important;
     background-color: #f70505 !important;
     color: #fff;
 }
+
 .shadow-md {
     box-shadow: 0px 5px 10px rgba(90, 116, 148, 0.3);
 }
-.navbar{
-  border-radius: 9px;
-}
-/* Sidebar CSS */
-.sidebar {
-  width: 280px;
-  min-height: 100vh;
-  background-color: #2f343a;
-  position: fixed;
-  top: 0;
-  right: -280px; /* Position the sidebar initially outside the viewport on the right side */
-  transition: right 0.5s ease; /* Use 'right' property to transition the sidebar */
-}
 
-.sidebar.active {
-  right: 0; /* Slide the sidebar into view from the right side when active */
-}
-
-.sd-header{
+.sd-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px;
     color: #fff;
 }
-.sidebar-overlay{
+
+.sidebar-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     transition: 0.5s;
     opacity: 0;
     visibility: hidden;
 }
-.sidebar-overlay.active{
-    
+
+.sidebar-overlay.active {
     visibility: visible;
 }
-.sd-body{
+
+.sd-body {
     padding: 15px;
     max-height: calc(100vh - 67px);
     overflow-x: hidden;
 }
-.sd-body ul{
+
+.sd-body ul {
     display: inline-block;
     width: 100%;
     margin-bottom: 0;
     padding: 0;
 }
-.sd-body ul li{
+
+.sd-body ul li {
     list-style: none;
     margin-bottom: 8px;
 }
-.sd-body ul li .sd-link{
+
+.sd-button {
     display: inline-block;
-    width: 100%;
+    width: 90%;
     padding: 10px 16px;
     color: #fff;
     background-color: #f70505;
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
+    margin: 10px;
 }
 
 .btn.btn-outline-light {
-  color: #f70505;
-  background-color: #202225;
-  padding: 10px;
-  margin: 10px;
+    color: #f70505;
+    background-color: #202225;
+    padding: 10px;
+    margin: 10px;
 }
 
-.form-style{
-  text-align: center;
-  display: inline-flex;
-  align-content: center;
+.form-style {
+    text-align: center;
+    display: inline-flex;
+    align-content: center;
 }
 
-.user-name{
-  color: #fff;
-  margin: 20px;
+.user-name {
+    color: #fff;
+    margin: 20px;
 }
 
-.navbar-brand{
-  padding-right: 425px;
-  border-radius: 5px;
+.navbar-brand {
+    padding-right: 425px;
+    border-radius: 5px;
 }
-
-
-
-
