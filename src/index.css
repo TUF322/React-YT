@@ -8,11 +8,11 @@ body {
 }
 /* ---Sidebar css */
 .text-primary{
-  color: #5a8dee!important;
+  color: #f70505!important;
 }
 .btn-primary {
-    border-color: #5a8dee !important;
-    background-color: #5a8dee !important;
+    border-color: #f70505 !important;
+    background-color: #f70505 !important;
     color: #fff;
 }
 .shadow-md {
@@ -21,25 +21,27 @@ body {
 .navbar{
   border-radius: 9px;
 }
-.sidebar{
-    width: 280px;
-    min-height: 100vh;
-    
-    background-color: #fff;
-    position: fixed;
-    top: 0;
-    left: -100%;
-    
-    transition: 0.5s;
+/* Sidebar CSS */
+.sidebar {
+  width: 280px;
+  min-height: 100vh;
+  background-color: #2f343a;
+  position: fixed;
+  top: 0;
+  right: -280px; /* Position the sidebar initially outside the viewport on the right side */
+  transition: right 0.5s ease; /* Use 'right' property to transition the sidebar */
 }
-.sidebar.active{
-    left: 0;
+
+.sidebar.active {
+  right: 0; /* Slide the sidebar into view from the right side when active */
 }
+
 .sd-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px;
+    color: #fff;
 }
 .sidebar-overlay{
     position: fixed;
@@ -75,8 +77,8 @@ body {
     display: inline-block;
     width: 100%;
     padding: 10px 16px;
-    color: #475f7b;
-    background-color: #e5e8ec;
+    color: #fff;
+    background-color: #f70505;
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './yt-logo.png';
 import userIcon from './user_img.png'; // Example user icon
+import './index.css'; // Import the CSS file for the Navbar component
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -12,47 +12,67 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="#"></a>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a className="navbar-brand" href="#">
+        <img src={logo} alt="logo" />
+      </a>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        onClick={toggleSidebar} // Toggle the sidebar when the button is clicked
+      >
         <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <div className={`collapse navbar-collapse ${sidebarOpen ? 'show' : ''}`}>
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <img src={logo} alt="logo"></img>
-          </li>
-          <li className="nav-item d-flex justify-content-center align-items-center">
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '1100px', margin: 'center' }}>
-              <form className="form-inline mx-auto">
-                <div>
-                  <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                  <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </div>
-              </form>
-            </div>
+          <li className="nav-item">
+            <form className="form-inline my-2 my-lg-0 mx-auto">
+              <input
+                className="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+                Search
+              </button>
+            </form>
           </li>
         </ul>
         <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-            <img src={userIcon} alt="user icon" style={{ width: '30px', height: '30px', borderRadius: '50%' }}></img>
-          </li>
           <li className="nav-item">
-            <button className="btn btn-outline-light" onClick={toggleSidebar}>
-              {sidebarOpen ? 'Close Sidebar' : 'Open Sidebar'}
-            </button>
+            <img src={userIcon} alt="user icon" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
           </li>
-          
         </ul>
       </div>
+
+      <button className="btn btn-outline-light" onClick={toggleSidebar}>
+        {sidebarOpen ? 'Close Sidebar' : 'Open Sidebar'}
+      </button>
+
       {sidebarOpen && (
-        <div className="sidebar">
-          {/* Your sidebar content goes here */}
-          <ul>
-            <li>Menu Item 1</li>
-            <li>Menu Item 2</li>
-            <li>Menu Item 3</li>
-          </ul>
+        <div className="sidebar active">
+          <div className="sd-header">
+            <h4 className="mb-0">Sidebar Header</h4>
+            <div className="btn btn-primary" onClick={toggleSidebar}><i className="fa fa-times"></i></div>
+          </div>
+          <div className="sd-body">
+            <ul>
+              <li><a className="sd-link">Menu Item 1</a></li>
+              <li><a className="sd-link">Menu Item 2</a></li>
+              <li><a className="sd-link">Menu Item 3</a></li>
+              <li><a className="sd-link">Menu Item 4</a></li>
+              <li><a className="sd-link">Menu Item 5</a></li>
+              <li><a className="sd-link">Menu Item 6</a></li>
+              <li><a className="sd-link">Menu Item 7</a></li>
+              <li><a className="sd-link">Menu Item 8</a></li>
+            </ul>
+          </div>
         </div>
       )}
     </nav>
