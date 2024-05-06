@@ -10,16 +10,12 @@ const ThumbnailCard = ({ imageUrl, title, channelName, views }) => {
         style={{ maxWidth: '100%', height: 'auto' }}
       />
       <div className="thumbnail-text">
-        <div className="thumbnail-content">
-            
-          <h5 className="thumbnail-title">{title}</h5>
-          <p className="thumbnail-channel">{channelName}</p>
-          <p className="thumbnail-views">{views} views</p>
-        </div>
+        <h5 className="thumbnail-title">{title}</h5>
+        <p className="thumbnail-channel">{channelName}</p>
+        <p className="thumbnail-views">{views} views</p>
       </div>
     </div>
   );
 }
 
 export default ThumbnailCard;
-

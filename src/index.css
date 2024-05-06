@@ -147,6 +147,7 @@ body {
     padding-left: 10px;
     overflow-x: hidden; /* Allow horizontal overflow */
     overflow-y: hidden; /* Hide vertical overflow */
+    margin-bottom: 10px;
 }
 
 /* Adjust the margin-left of the tags row when the sidebar is active */
@@ -160,7 +161,7 @@ body {
     width: 77px;
     height: 37px;
     margin-right: 10px;
-    background-color: #343a40;
+    background-color: #f70505;
   }
   
   .card-title {
@@ -183,7 +184,6 @@ body {
   }
   
   .thumbnail-card {
-    display: flex;
     align-items: center;
     background-color: #fff;
     border-radius: 8px;
@@ -192,11 +192,16 @@ body {
     margin-bottom: 20px;
     background-color: #343a40;
     width: 300px;
+    display: grid;
+    grid-template-rows: auto 1fr; /* Set the first row to auto to fit the image and the second row to 1fr to let the text content take the remaining space */
+    gap: 10px; /* Adjust the gap between the image and the text */
     
+    margin-left: 10px;
+    margin-top: 10px;
   }
   
   .thumbnail-image {
-    width: 180px;
+    width: auto;
     height: 100px;
     margin-right: 12px;
   }
@@ -205,7 +210,6 @@ body {
     display: flex;
     flex-direction: column;
   }
-  
   
   .thumbnail-title {
     margin: 0;
@@ -219,6 +223,17 @@ body {
     margin: 4px 0;
     font-size: 10px;
     color: #dddddd;
+  }
+  
+  .thumbnail-rows {
+    padding-left: 10px;
+  }
+
+  .thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:left;
+    padding: 0 10px; /* Add padding to the container */
   }
   
 
