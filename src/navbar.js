@@ -2,21 +2,109 @@ import React, { useState } from 'react';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn.png';
-import TagsRow from './TagsRow'; // Import the TagsRow component
-import ThumbnailCard from './ThumbnailCard'; // Import the ThumbnailCard component
+import TagsRow from './TagsRow';
+import ThumbnailCard from './ThumbnailCard';
 import './index.css';
-import min1 from './min1.jpg'
-import min2 from './min2.jpg'
-import min3 from './min3.jpeg'
-import min4 from './min4.jpg'
-import min5 from './min5.jpg'
-import min6 from './min6.jpg'
-import min7 from './min7.jpg'
-import min8 from './min8.jpg'
-import min9 from './min9.png'
-import min10 from './min10.jpeg'
-import min11 from './min11.jpeg'
-import min12 from './min12.jpeg'
+import min1 from './min1.jpg';
+import min2 from './min2.jpg';
+import min3 from './min3.jpeg';
+import min4 from './min4.jpg';
+import min5 from './min5.jpg';
+import min6 from './min6.jpg';
+import min7 from './min7.jpg';
+import min8 from './min8.jpg';
+import min9 from './min9.png';
+import min10 from './min10.jpeg';
+import min11 from './min11.jpeg';
+import min12 from './min12.jpeg';
+
+const title = 'Loren ipsum';
+const title2 = 'GTA V';
+const title3 = 'CS2';
+const channel = 'Joãosinho gaming';
+const channel2 = 'PEPE';
+const channel3 = 'BrainRot';
+
+// Function to generate a random number between min and max
+const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// Example data for thumbnail cards
+const thumbnailData = [
+  {
+    imageUrl: min1,
+    title: title2,
+    channelName: channel2,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min2,
+    title: title,
+    channelName: channel3,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min3,
+    title: title2,
+    channelName: channel3,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min4,
+    title: title2,
+    channelName: channel3,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min5,
+    title: title,
+    channelName: channel2,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min6,
+    title: title3,
+    channelName: channel2,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },{
+    imageUrl: min7,
+    title: title,
+    channelName: channel2,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min8,
+    title: title3,
+    channelName: channel3,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min9,
+    title: title,
+    channelName: channel,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min10,
+    title: title2,
+    channelName: channel,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min11,
+    title: title,
+    channelName: channel3,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min12,
+    title: title2,
+    channelName: channel3,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  // Add more thumbnail data as needed
+];
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -25,103 +113,9 @@ const Navbar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const title = 'Loren ipsum';
-  const channel = 'Loren ipsum';
-  
-  // Function to generate a random number between min and max
-  const getRandomNumber = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-  
-  // Example data for thumbnail cards
-  const thumbnailData = [
-    {
-      imageUrl: min1,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min2,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min3,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min4,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min5,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min6,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min7,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min8,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min9,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min10,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min11,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min12,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    {
-      imageUrl: min1,
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(100, 1000000000).toLocaleString()
-    },
-    
-    
-    // Add more thumbnail data as needed
-  ];
-  
-
   return (
-    <div>
-      <nav className={`navbar navbar-expand-lg navbar-dark bg-dark ${sidebarOpen ? 'sidebar-active' : ''}`}>
+    <div className={`main-container ${sidebarOpen ? 'sidebar-active' : ''}`}>
+      <nav className={`navbar navbar-expand-lg navbar-dark  ${sidebarOpen ? 'sidebar-active' : ''}`}>
         <button className="btn btn-outline-light" onClick={toggleSidebar}>
           {sidebarOpen ? (
             <img src={hamburgerBtn} alt="close sidebar" style={{ width: '30px', height: '30px' }} />
@@ -174,10 +168,24 @@ const Navbar = () => {
           <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
             <h2 className='sd-header'>Menu</h2>
             <ul>
-              <li className='sd-button'>Menu Item 1</li>
-              <li className='sd-button'>Menu Item 2</li>
-              <li className='sd-button'>Menu Item 3</li>
+              <li className='sd-button'>Inicio</li>
+              <li className='sd-button'>Shorts</li>
+              <li className='sd-button'>Suscripciones</li>
+              <li className='separator'></li> {/* Use an empty list item for separation */}
+              <li className='sd-subh'>Tu »</li>
+              <li className='sd-button'>Teu Canal</li>
+              <li className='sd-button'>Historial</li>
+              <li className='sd-button'>Lista de reproduções</li>
+              <li className='sd-button'>Meus Videos</li>
+              <li className='sd-button'>Ver más tarde</li>
+              <li className='sd-button'>Vídeos que Gostaste</li>
+              <li className='separator'></li>
+              <li className='sd-subh'>Suscripciones</li>
+              <li className='sd-susc'>BrainRot</li>
+              <li className='sd-susc'>PEPE</li>
+              <li className='sd-susc'>Joãosinho gaming</li>
             </ul>
+
           </div>
         </div>
       </nav>
@@ -186,20 +194,12 @@ const Navbar = () => {
       <TagsRow />
 
       {/* Thumbnail Cards */}
-      <div>
-      <nav className={`navbar navbar-expand-lg navbar-dark bg-dark ${sidebarOpen ? 'sidebar-active' : ''}`}>
-        {/* Navbar content */}
-      </nav>
-
-      {/* Thumbnail Cards */}
       <div className="thumbnail-container">
         {thumbnailData.map((data, index) => (
           <ThumbnailCard key={index} {...data} />
         ))}
       </div>
     </div>
-  </div>
-    
   );
 }
 
