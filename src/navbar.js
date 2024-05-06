@@ -1,11 +1,11 @@
-// navbar.js
-
 import React, { useState } from 'react';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn.png';
 import TagsRow from './TagsRow'; // Import the TagsRow component
+import ThumbnailCard from './ThumbnailCard'; // Import the ThumbnailCard component
 import './index.css';
+import min1 from './min1.jpg'
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -13,6 +13,17 @@ const Navbar = () => {
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+  // Example data for thumbnail cards
+  const thumbnailData = [
+    {
+      imageUrl: min1,
+      title: 'Example Title 1',
+      channelName: 'Channel 1',
+      views: '1,000,000'
+    },
+    // Add more thumbnail data as needed
+  ];
 
   return (
     <div>
@@ -79,6 +90,13 @@ const Navbar = () => {
 
       {/* Tags Row */}
       <TagsRow />
+
+      {/* Thumbnail Cards */}
+      <div className={`thumbnails-container ${sidebarOpen ? 'sidebar-active' : ''}`}>
+        {thumbnailData.map((data, index) => (
+          <ThumbnailCard key={index} {...data} />
+        ))}
+      </div>
     </div>
   );
 }

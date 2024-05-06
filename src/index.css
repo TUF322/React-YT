@@ -182,6 +182,45 @@ body {
     margin-left: 280px; /* Add sidebar width to margin-left */
   }
   
+  .thumbnail-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #343a40;
+    width: 300px;
+    
+  }
+  
+  .thumbnail-image {
+    width: 180px;
+    height: 100px;
+    margin-right: 12px;
+  }
+  
+  .thumbnail-text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .thumbnail-title {
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .thumbnail-channel,
+  .thumbnail-views {
+    margin: 4px 0;
+    font-size: 10px;
+    color: #dddddd;
+  }
+  
 
   
  
