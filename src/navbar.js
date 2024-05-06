@@ -1,4 +1,3 @@
-// Navbar.js
 import React, { useState } from 'react';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
@@ -130,8 +129,12 @@ const Navbar = () => {
   };
 
   const handleTagClick = (tag) => {
-    filterThumbnails(tag);
     setSearchQuery(tag);
+    filterThumbnails(tag);
+  };
+
+  const refreshPage = () => {
+    window.location.reload();
   };
 
   return (
@@ -182,7 +185,8 @@ const Navbar = () => {
           <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
             <h2 className='sd-header'>Menu</h2>
             <ul>
-            <li className='sd-button'>Inicio</li>
+              <li className='sd-button' onClick={refreshPage}>Inicio</li>
+              
               <li className='sd-button'>Shorts</li>
               <li className='sd-button'>Suscripciones</li>
               <li className='separator'></li>
@@ -195,9 +199,10 @@ const Navbar = () => {
               <li className='sd-button'>Vídeos que Gostaste</li>
               <li className='separator'></li>
               <li className='sd-subh'>Suscripciones</li>
-              <li className='sd-susc'>BrainRot</li>
-              <li className='sd-susc'>PEPE</li>
-              <li className='sd-susc'>Joãosinho gaming</li>
+              <li className='sd-susc' onClick={() => handleTagClick('BrainRot')}>BrainRot</li>
+              <li className='sd-susc' onClick={() => handleTagClick('PEPE')}>PEPE</li>
+              <li className='sd-susc' onClick={() => handleTagClick('Joãosinho gaming')}>Joãosinho gaming</li>
+              {/* Other sidebar items... */}
             </ul>
           </div>
         </div>
