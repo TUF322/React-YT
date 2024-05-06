@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import logo from './bg-yt-logo.png';
-import userIcon from './userimg.png'; // Example user icon
-import './index.css'; // Import the CSS file for the Navbar component
+import userIcon from './userimg.png';
+import hamburgerBtn from './hamburger-btn.png'; // Import the hamburger button image
+import './index.css';
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -12,20 +13,23 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark bg-dark ${sidebarOpen ? 'sidebar-active' : ''}`}>
+      <button className="btn btn-outline-light" onClick={toggleSidebar}>
+  {sidebarOpen ? (
+    <img src={hamburgerBtn} alt="close sidebar" style={{ width: '40px', height: '40px' }} />
+  ) : (
+    <img src={hamburgerBtn} alt="open sidebar" style={{ width: '40px', height: '40px' }} />
+  )}
+</button>
+
       <a className="navbar-brand" href="#">
         <img src={logo} alt="logo" />
       </a>
       <button
         className="navbar-toggler"
         type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
         onClick={toggleSidebar} // Toggle the sidebar when the button is clicked
       >
-        <span className="navbar-toggler-icon"></span>
+        <img src={hamburgerBtn} alt="hamburger button" style={{ width: '50px', height: '50px' }} /> {/* Hamburger button image */}
       </button>
 
       <div className={`collapse navbar-collapse ${sidebarOpen ? 'show' : ''}`}>
@@ -48,29 +52,25 @@ const Navbar = () => {
           <li>
             <p className='user-name'>User@gmail.com</p>
           </li>
-          <li className="nav-item" style={{paddingLeft:"14px"}}>
+          <li className="nav-item" style={{ paddingLeft: "14px", paddingTop: "14px" }}>
             <img src={userIcon} alt="user icon" style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
           </li>
         </ul>
       </div>
 
-      <button className="btn btn-outline-light" onClick={toggleSidebar}>
-        {sidebarOpen ? 'Close Sidebar' : 'Open Sidebar'}
-      </button>
+      {/* Sidebar Overlay */}
+      <div className={`sidebar-overlay ${sidebarOpen ? 'active' : ''}`} onClick={toggleSidebar}></div>
 
-      <div className=''>
+      {/* Sidebar */}
       <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
-        <h2 className='sd-header'>sidebar Header</h2>
+        <h2 className='sd-header'>Menu</h2>
         <ul>
           <li className='sd-button'>Menu Item 1</li>
           <li className='sd-button'>Menu Item 2</li>
           <li className='sd-button'>Menu Item 3</li>
+          <li className='sd-button'>Menu Item 4</li>
         </ul>
       </div>
-
-      </div>
-
-      
     </nav>
   );
 }
