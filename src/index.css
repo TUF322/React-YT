@@ -145,6 +145,8 @@ body {
     margin-left: 0; /* Initial margin-left value */
     padding-top: 10px;
     padding-left: 10px;
+    overflow-x: hidden; /* Allow horizontal overflow */
+    overflow-y: hidden; /* Hide vertical overflow */
 }
 
 /* Adjust the margin-left of the tags row when the sidebar is active */
@@ -170,9 +172,11 @@ body {
   /* Updated styles for tags row container */
 
 
-.tags-row-container {
-    overflow: hidden; /* Hide both horizontal and vertical overflow */
-}  
+  .tags-row-container {
+    overflow-x: visible; /* Allow horizontal overflow */
+    overflow-y: hidden; /* Hide vertical overflow */
+}
+
   /* Adjust the margin-left of the tags row when the sidebar is active */
   .navbar.sidebar-active + .tags-row {
     margin-left: 280px; /* Add sidebar width to margin-left */
