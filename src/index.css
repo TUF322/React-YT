@@ -20,7 +20,7 @@ body {
     left: 0;
   }
   
-  /* Other styles remain unchanged */
+  
   
 
 
@@ -133,3 +133,56 @@ body {
     padding-right: 425px;
     border-radius: 5px;
 }
+/* Updated styles for tags row */
+
+.tags-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+    transition: margin-left 0.5s; /* Add transition for smooth movement */
+    margin-left: 0; /* Initial margin-left value */
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+  
+  /* Adjust the margin-left of the tags row when the sidebar is active */
+  .navbar.sidebar-active + .tags-row {
+    margin-left: 280px; /* Add sidebar width to margin-left */
+  }
+  
+  .card {
+    flex: 0 0 75px;
+    width: 77px;
+    height: 37px;
+    margin-right: 10px;
+    background-color: #343a40;
+  }
+  
+  .card-title {
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+    align-content: center;
+  }
+  /* Updated styles for tags row container */
+
+.tags-row-container {
+    overflow-x: hidden; /* Hide horizontal overflow */
+    overflow-y: hidden; /* Hide vertical overflow */
+  }
+  
+  
+
+  
+  /* Adjust the margin-left of the tags row when the sidebar is active */
+  .navbar.sidebar-active + .tags-row {
+    margin-left: 280px; /* Add sidebar width to margin-left */
+  }
+  
+
+  
+ 
+  
+  
+
