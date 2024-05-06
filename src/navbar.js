@@ -1,3 +1,4 @@
+// Navbar.js
 import React, { useState } from 'react';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
@@ -18,6 +19,11 @@ import min10 from './min10.jpeg';
 import min11 from './min11.jpeg';
 import min12 from './min12.jpeg';
 
+// Function to generate a random number between min and max
+const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 const title = 'Loren ipsum';
 const title2 = 'GTA V';
 const title3 = 'CS2';
@@ -25,12 +31,6 @@ const channel = 'Joãosinho gaming';
 const channel2 = 'PEPE';
 const channel3 = 'BrainRot';
 
-// Function to generate a random number between min and max
-const getRandomNumber = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-// Example data for thumbnail cards
 const thumbnailData = [
   {
     imageUrl: min1,
@@ -41,76 +41,97 @@ const thumbnailData = [
   {
     imageUrl: min2,
     title: title,
-    channelName: channel3,
-    views: getRandomNumber(100, 1000000000).toLocaleString()
+    channelName: channel2,
+    views: getRandomNumber(1, 100).toLocaleString()
   },
   {
     imageUrl: min3,
-    title: title2,
-    channelName: channel3,
+    title: title,
+    channelName: channel,
     views: getRandomNumber(100, 1000000000).toLocaleString()
   },
   {
     imageUrl: min4,
-    title: title2,
-    channelName: channel3,
+    title: title3,
+    channelName: channel,
     views: getRandomNumber(100, 1000000000).toLocaleString()
   },
   {
     imageUrl: min5,
-    title: title,
-    channelName: channel2,
+    title: title2,
+    channelName: channel3,
     views: getRandomNumber(100, 1000000000).toLocaleString()
   },
   {
     imageUrl: min6,
     title: title3,
-    channelName: channel2,
+    channelName: channel,
     views: getRandomNumber(100, 1000000000).toLocaleString()
-  },{
+  },
+  {
     imageUrl: min7,
-    title: title,
-    channelName: channel2,
-    views: getRandomNumber(100, 1000000000).toLocaleString()
-  },
-  {
-    imageUrl: min8,
-    title: title3,
-    channelName: channel3,
-    views: getRandomNumber(100, 1000000000).toLocaleString()
-  },
-  {
-    imageUrl: min9,
     title: title,
     channelName: channel,
     views: getRandomNumber(100, 1000000000).toLocaleString()
   },
   {
-    imageUrl: min10,
+    imageUrl: min8,
+    title: title,
+    channelName: channel2,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min9,
     title: title2,
     channelName: channel,
     views: getRandomNumber(100, 1000000000).toLocaleString()
   },
   {
-    imageUrl: min11,
+    imageUrl: min10,
     title: title,
+    channelName: channel3,
+    views: getRandomNumber(100, 1000000000).toLocaleString()
+  },
+  {
+    imageUrl: min11,
+    title: title3,
     channelName: channel3,
     views: getRandomNumber(100, 1000000000).toLocaleString()
   },
   {
     imageUrl: min12,
     title: title2,
-    channelName: channel3,
+    channelName: channel,
     views: getRandomNumber(100, 1000000000).toLocaleString()
   },
-  // Add more thumbnail data as needed
+  // Add more thumbnail data...
 ];
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredThumbnails, setFilteredThumbnails] = useState(thumbnailData);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    filterThumbnails(e.target.value);
+  };
+
+  const filterThumbnails = (query) => {
+    const filtered = thumbnailData.filter(data =>
+      data.title.toLowerCase().includes(query.toLowerCase()) ||
+      data.channelName.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredThumbnails(filtered);
+  };
+
+  const handleTagClick = (tag) => {
+    filterThumbnails(tag);
+    setSearchQuery(tag);
   };
 
   return (
@@ -135,21 +156,16 @@ const Navbar = () => {
         </button>
 
         <div className={`collapse navbar-collapse ${sidebarOpen ? 'show' : ''}`}>
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <form className="form-inline my-2 my-lg-0 mx-auto">
-                <input
-                  className="form-control mr-sm-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-                  Search
-                </button>
-              </form>
-            </li>
-          </ul>
+          <form className="form-inline my-2 my-lg-0 mx-auto">
+            <input
+              className="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+          </form>
           <ul className="navbar-nav ml-auto">
             <li>
               <p className='user-name'>User@gmail.com</p>
@@ -159,19 +175,17 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-
         <div>
           {/* Sidebar Overlay */}
           <div className={`sidebar-overlay ${sidebarOpen ? 'active' : ''}`} onClick={toggleSidebar}></div>
-
           {/* Sidebar */}
           <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
             <h2 className='sd-header'>Menu</h2>
             <ul>
-              <li className='sd-button'>Inicio</li>
+            <li className='sd-button'>Inicio</li>
               <li className='sd-button'>Shorts</li>
               <li className='sd-button'>Suscripciones</li>
-              <li className='separator'></li> {/* Use an empty list item for separation */}
+              <li className='separator'></li>
               <li className='sd-subh'>Tu »</li>
               <li className='sd-button'>Teu Canal</li>
               <li className='sd-button'>Historial</li>
@@ -185,17 +199,12 @@ const Navbar = () => {
               <li className='sd-susc'>PEPE</li>
               <li className='sd-susc'>Joãosinho gaming</li>
             </ul>
-
           </div>
         </div>
       </nav>
-
-      {/* Tags Row */}
-      <TagsRow />
-
-      {/* Thumbnail Cards */}
+      <TagsRow handleTagClick={handleTagClick} />
       <div className="thumbnail-container">
-        {thumbnailData.map((data, index) => (
+        {filteredThumbnails.map((data, index) => (
           <ThumbnailCard key={index} {...data} />
         ))}
       </div>

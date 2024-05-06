@@ -131,7 +131,7 @@ body {
 }
 
 .navbar-brand {
-    padding-right: 425px;
+    padding-right: 250px;
     border-radius: 5px;
 }
 /* Updated styles for tags row */
@@ -149,7 +149,10 @@ body {
     overflow-x: hidden; /* Allow horizontal overflow */
     overflow-y: hidden; /* Hide vertical overflow */
     margin-bottom: 10px;
+    
 }
+
+
 
 /* Adjust the margin-left of the tags row when the sidebar is active */
 .sidebar-active .tags-row {
