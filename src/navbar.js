@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
-import hamburgerBtn from './hamburger-btn.png';
+import hamburgerBtn from './hamburger-btn2.png';
 import TagsRow from './TagsRow';
 import ThumbnailCard from './ThumbnailCard';
 import './index.css';
@@ -140,11 +140,11 @@ const Navbar = () => {
   return (
     <div className={`main-container ${sidebarOpen ? 'sidebar-active' : ''}`}>
       <nav className={`navbar navbar-expand-lg navbar-dark  ${sidebarOpen ? 'sidebar-active' : ''}`}>
-        <button className="btn btn-outline-light" onClick={toggleSidebar}>
+        <button className="btn btn-outline-lightgray" onClick={toggleSidebar}>
           {sidebarOpen ? (
-            <img src={hamburgerBtn} alt="close sidebar" style={{ width: '30px', height: '30px' }} />
+            <img src={hamburgerBtn} alt="close sidebar" style={{ width: 'auto', height: 'auto' }} />
           ) : (
-            <img src={hamburgerBtn} alt="open sidebar" style={{ width: '30px', height: '30px' }} />
+            <img src={hamburgerBtn} alt="open sidebar" style={{ width: 'auto', height: 'auto' }} />
           )}
         </button>
         <a className="navbar-brand" href="#">

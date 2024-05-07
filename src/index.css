@@ -2,14 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 
 body {
-    background-color: #202225;
+    background-color: #100c0c;
     font-family: "Rubik", sans-serif;
 }
 /* Sidebar CSS */
 .sidebar {
     width: 280px;
     min-height: 100vh;
-    background-color: #202225; /* Changed background color */
+    background-color: #100c0c; /* Changed background color */
     position: fixed;
     top: 0;
     left: -280px;
@@ -58,7 +58,7 @@ body {
     text-align: center;
     padding-left: 100px;
     font-size: 37px;
-    background-color: #202225;
+    background-color: #100c0c;
     color: #fff;
 }
 
@@ -68,7 +68,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #202225;
+  background-color: #100c0c;
   transition: 0.5s;
   opacity: 0;
   visibility: hidden;
@@ -101,20 +101,25 @@ body {
 }
 
 .sd-button {
-    display: inline-block;
-    width: 90%;
-    padding: 10px 16px;
-    color: #fff;
-    background-color: #f70505;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    margin: 10px;
+  display: inline-block;
+  width: 90%;
+  padding: 10px 16px;
+  color: #fff;
+  background-color: #100c0c;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 10px;
 }
+
+.sd-button:hover {
+  background-color: #555; /* Change to desired hover color */
+}
+
 
 .btn.btn-outline-light {
     color: #f70505;
-    background-color: #202225;
+    background-color: #100c0c;
     padding: 10px;
     margin: 10px;
 }
@@ -165,8 +170,14 @@ body {
     width: 77px;
     height: 37px;
     margin-right: 10px;
-    background-color: #f70505;
+    background-color: #151618;
+    cursor: pointer;
   }
+
+  .card:hover {
+    background-color: #555; /* Change to desired hover color */
+  }
+  
   
   .card-title {
     font-size: 9px;
@@ -194,7 +205,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Add white outline */
     padding: 12px;
     margin-bottom: 20px;
-    background-color: #202225;
+    background-color: #100c0c;
     width: 300px;
     display: grid;
     grid-template-rows: auto 1fr; /* Set the first row to auto to fit the image and the second row to 1fr to let the text content take the remaining space */
@@ -203,6 +214,8 @@ body {
     margin-left: 7px;
     margin-top: 10px;
   }
+
+  
   
   .thumbnail-image {
     width: auto;
@@ -250,6 +263,7 @@ body {
     margin-left: 0; /* Initial margin-left value */
   }
   
+  
   /* Adjust the margin-left of the thumbnail container when the sidebar is active */
   .sidebar-active .thumbnail-container {
     margin-left: 280px; /* Add sidebar width to margin-left */
@@ -271,11 +285,15 @@ body {
     width: 90%;
     padding: 10px 16px;
     color: #fff;
-    background-color: #202225;
+    background-color: #100c0c;
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
     margin: 10px;
+  }
+
+  .sd-susc:hover {
+    background-color: #555; /* Change to desired hover color */
   }
   
 

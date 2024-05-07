@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ToggleSidebar from './navbar.js'; // Importing the ToggleSidebar component
 import './index.css';
 //back color
-document.body.style.backgroundColor = '#202225';
+document.body.style.backgroundColor = '#100c0c';
 
 
 ReactDOM.render(
