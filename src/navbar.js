@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
@@ -20,9 +20,6 @@ import min10 from './min10.jpeg';
 import min11 from './min11.jpeg';
 import min12 from './min12.jpeg';
 
-const navigate = useNavigate();
-
-// Function to generate a random number between min and max
 const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
@@ -90,10 +87,6 @@ const Navbar = () => {
     filterThumbnails(tag);
   };
 
-  const refreshPage = () => {
-    window.location.reload();
-  };
-
   return (
     <div className={`main-container ${sidebarOpen ? 'sidebar-active' : ''}`}>
       <nav className={`navbar navbar-expand-lg navbar-dark  ${sidebarOpen ? 'sidebar-active' : ''}`}>
@@ -140,7 +133,8 @@ const Navbar = () => {
             <ul>
               <li className="sd-button">Inicio</li>
 
-              <li className="sd-button" onClick={() => navigate(Shorts)}>
+              {/* Correctly use Link component */}
+              <li className="sd-button">
                 <Link to="/Shorts">Shorts</Link>
               </li>
               <li className="sd-button">Suscripciones</li>
