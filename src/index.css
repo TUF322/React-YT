@@ -295,6 +295,14 @@ body {
   .sd-susc:hover {
     background-color: #555; /* Change to desired hover color */
   }
+
+  .form-control-mr-sm-2{
+    background-color: #151618;
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(213, 213, 213, 0.5);
+  
+  }
   
 
   
