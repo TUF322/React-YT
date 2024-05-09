@@ -20,8 +20,6 @@ body {
     left: 0;
   }
   
-  
-  
 
 
 .navbar {
@@ -136,7 +134,7 @@ body {
 }
 
 .navbar-brand {
-    padding-right: 250px;
+    padding-right: 190px;
     border-radius: 5px;
 }
 /* Updated styles for tags row */
@@ -319,7 +317,8 @@ body {
     display: flex;
     justify-content: center; /* Horizontally center the content */
     align-items: center; /* Vertically center the content */
-    outline: 1px solid white; /* White outline around the darker area */
+    outline: 1px solid white; 
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0);
     margin-bottom: 100px;  
   }
@@ -374,6 +373,24 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+  }
+
+  .sd-buttonselected{
+    display: inline-block;
+    width: 90%;
+    padding: 10px 16px;
+    color: #fff;
+    
+    background-color: #100c0c;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 10px;
+
+  }
+
+  .nothere{
+    color: #fff;
   }
   
   

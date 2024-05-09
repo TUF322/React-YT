@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
 import TagsRow from './TagsRow';
 import ThumbnailCard from './ThumbnailCard';
+import Shorts from './Shorts.js';
 import './index.css';
 import min1 from './min1.jpg';
 import min2 from './min2.jpg';
@@ -19,7 +20,6 @@ import min10 from './min10.jpeg';
 import min11 from './min11.jpeg';
 import min12 from './min12.jpeg';
 
-// Function to generate a random number between min and max
 const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
@@ -35,7 +35,7 @@ const fillThumbnails = () => {
       imageUrl: getRandomImageUrl(),
       title: title,
       channelName: channel,
-      views: getRandomNumber(1000, 90000000).toLocaleString(),
+      views: getRandomNumber(1, 9).toLocaleString(),
     });
   }
 
@@ -87,10 +87,6 @@ const Navbar = () => {
     filterThumbnails(tag);
   };
 
-  const refreshPage = () => {
-    window.location.reload();
-  };
-
   return (
     <div className={`main-container ${sidebarOpen ? 'sidebar-active' : ''}`}>
       <nav className={`navbar navbar-expand-lg navbar-dark  ${sidebarOpen ? 'sidebar-active' : ''}`}>
@@ -117,6 +113,7 @@ const Navbar = () => {
               aria-label="Search"
               value={searchQuery}
               onChange={handleSearchChange}
+              style={{width:"500px", borderRadius:"5px"}}
             />
           </form>
           <ul className="navbar-nav ml-auto">
@@ -135,10 +132,11 @@ const Navbar = () => {
           <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
             <h2 className="sd-header">Menu</h2>
             <ul>
-              <li className="sd-button">Inicio</li>
+              <li className="sd-button"><Link to="/" style={{color:"#f70505"}}>Inicio</Link></li>
 
+              {/* Correctly use Link component */}
               <li className="sd-button">
-                <Link to="/Shorts">Shorts</Link>
+                <Link to="/Shorts" style={{color:"#fff"}}>Shorts</Link>
               </li>
               <li className="sd-button">Suscripciones</li>
               <li className="separator"></li>

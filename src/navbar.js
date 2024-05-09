@@ -131,7 +131,7 @@ const Navbar = () => {
           <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
             <h2 className="sd-header">Menu</h2>
             <ul>
-              <li className="sd-button">Inicio</li>
+              <li className="sd-button" style={{color:"#f70505"}}>Inicio</li>
 
               {/* Correctly use Link component */}
               <li className="sd-button">

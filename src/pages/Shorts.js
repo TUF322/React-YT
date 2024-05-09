@@ -27,6 +27,8 @@ import './index.css';
 const Shorts = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [likeCount, setLikeCount] = useState(100);
+  const [dislikeCount, setDislikeCount] = useState(100);
   const images = [Short1, Short2, Short3, Short4, Short5, Short6, Short7, Short8, Short9, Short10, Short11, Short12]; // Add more images as needed
 
   const toggleSidebar = () => {
@@ -39,6 +41,14 @@ const Shorts = () => {
 
   const handleUpClick = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+  };
+
+  const handleLikeClick = () => {
+    setLikeCount((prevCount) => prevCount + 1);
+  };
+
+  const handleDislikeClick = () => {
+    setDislikeCount((prevCount) => prevCount + 1);
   };
 
   return (
@@ -65,6 +75,7 @@ const Shorts = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              style={{width:"500px", borderRadius:"5px"}}
               
             />
           </form>
@@ -84,11 +95,11 @@ const Shorts = () => {
           <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
             <h2 className="sd-header">Menu</h2>
             <ul>
-              <li className="sd-button">Inicio</li>
+              <li className="sd-button"><Link to="/" style={{color:"#fff"}}>Inicio</Link></li>
 
               {/* Correctly use Link component */}
-              <li className="sd-button">
-                <Link to="/Shorts">Shorts</Link>
+              <li className="sd-buttonselected">
+                <Link to="/Shorts" style={{color:"#f70505"}}>Shorts</Link>
               </li>
               <li className="sd-button">Suscripciones</li>
               <li className="separator"></li>
@@ -125,8 +136,16 @@ const Shorts = () => {
               </div>
             </div>
             <div className="buttons-container">
-              <button className="button"><img src={like} alt="Like" /></button>
-              <button className="button"><img src={dislike} alt="Dislike" /></button>
+            <button className="button" onClick={handleLikeClick}>
+                <img src={like} alt="Like" />
+                <br/>
+                <span style={{color:"#fff"}}>{likeCount}</span>
+              </button>
+              <button className="button" onClick={handleDislikeClick}>
+                <img src={dislike} alt="Dislike" />
+                <br/>
+                <span style={{color:"#fff"}}>{dislikeCount}</span>
+              </button>
               <button className="button"><img src={commentbutton} alt="Comment" /></button>
               <button className="button" onClick={handleUpClick}><img src={upbutton} alt="Up" /></button>
               <button className="button" onClick={handleDownClick}><img src={Downbutton} alt="Down" /></button>
