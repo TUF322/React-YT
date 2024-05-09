@@ -3,18 +3,32 @@ import { Link } from 'react-router-dom';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
-import TagsRow from './TagsRow';
-import ThumbnailCard from './ThumbnailCard';
+
 import Short1 from './min1.jpg';
+import Short2 from './min2.jpg';
+import upbutton from'./upbutton.png';
+import Downbutton from'./downbutton.png';
+import like from'./likebutton.png';
+import dislike from'./dislikebutton.png';
+import commentbutton from'./commentbutton.png';
 
 
 import './index.css';
+import { click } from '@testing-library/user-event/dist/click';
 
 const Shorts = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
+  };
+
+  const DownClick = () => {
+    console.log("click");
+  };
+
+  const UpClick = () => {
+    console.log("click up");
   };
 
   return (
@@ -93,7 +107,7 @@ const Shorts = () => {
       </nav>
       
       <div className="shorts-container">
-  <div className="shorts"> {/* Apply the .shorts class to this div */}
+  <div className="shorts">
     <div className="darker-area">
       <div className="phone-size-container">
         <div className="vertical-img-placeholder">
@@ -102,9 +116,23 @@ const Shorts = () => {
           <img src={Short1} alt="Vertical Image" />
         </div>
       </div>
+      <div className="buttons-container">
+        {/* Buttons for like, dislike, comments, etc. */}
+        <button className="button"><img src={like}/></button>
+        <button className="button"><img src={dislike}/></button>
+        <button className="button"><img src={commentbutton}/></button>
+        <button className="button" onClick={UpClick}><img src={upbutton}/></button>
+        <button className="button" onClick={DownClick}><img src={Downbutton}/></button>
+        
+      </div>
+      <div className="user-image-container">
+        {/* Image of the user */}
+        <img src={userIcon} alt="User Image" className="user-image" />
+      </div>
     </div>
   </div>
 </div>
+
       
     </div>
   );
