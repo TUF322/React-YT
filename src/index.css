@@ -314,18 +314,19 @@ body {
   .darker-area {
     position: relative;
     background-color: rgba(0, 0, 0, 0.5); /* Darken with semi-transparent black */
-    width: 360px; /* Adjust as needed for the phone size */
-    height: 740px; /* Adjust as needed for the phone size */
+    width: 460px; /* Adjust as needed for the phone size */
+    height: 860px; /* Adjust as needed for the phone size */
     display: flex;
     justify-content: center; /* Horizontally center the content */
     align-items: center; /* Vertically center the content */
     outline: 1px solid white; /* White outline around the darker area */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0); /* White shadow to enhance the outline */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+    margin-bottom: 100px;  
   }
   
   .vertical-img-placeholder img {
     /* Add any additional styling for the image */
-    max-width: 100%; /* Ensure the image does not exceed its container */
+    max-width: 460px; /* Ensure the image does not exceed its container */
     max-height: 100%; /* Ensure the image does not exceed its container */
     
   }
@@ -335,7 +336,7 @@ body {
     justify-content: center; /* Horizontally center the content */
     align-items: center; /* Vertically center the content */
     width: 360px; /* Adjust as needed for the phone size */
-    height: 740px; /* Adjust as needed for the phone size */
+    height: 940px; /* Adjust as needed for the phone size */
   }
 
   .buttons-container {

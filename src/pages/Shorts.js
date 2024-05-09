@@ -3,32 +3,42 @@ import { Link } from 'react-router-dom';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
+import upbutton from './upbutton.png';
+import Downbutton from './downbutton.png';
+import like from './likebutton.png';
+import dislike from './dislikebutton.png';
+import commentbutton from './commentbutton.png';
 
 import Short1 from './min1.jpg';
 import Short2 from './min2.jpg';
-import upbutton from'./upbutton.png';
-import Downbutton from'./downbutton.png';
-import like from'./likebutton.png';
-import dislike from'./dislikebutton.png';
-import commentbutton from'./commentbutton.png';
-
+import Short3 from './min3.jpeg';
+import Short4 from './min4.jpg';
+import Short5 from './min5.jpg';
+import Short6 from './min6.jpg';
+import Short7 from './min7.jpg';
+import Short8 from './min8.jpg';
+import Short9 from './min9.png';
+import Short10 from './min10.jpeg';
+import Short11 from './min11.jpeg';
+import Short12 from './min12.jpeg';
 
 import './index.css';
-import { click } from '@testing-library/user-event/dist/click';
 
 const Shorts = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [Short1, Short2, Short3, Short4, Short5, Short6, Short7, Short8, Short9, Short10, Short11, Short12]; // Add more images as needed
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const DownClick = () => {
-    console.log("click");
+  const handleDownClick = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };
 
-  const UpClick = () => {
-    console.log("click up");
+  const handleUpClick = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
   };
 
   return (
@@ -107,33 +117,26 @@ const Shorts = () => {
       </nav>
       
       <div className="shorts-container">
-  <div className="shorts">
-    <div className="darker-area">
-      <div className="phone-size-container">
-        <div className="vertical-img-placeholder">
-          {/* Placeholder for vertical image */}
-          {/* You can replace this with your actual image */}
-          <img src={Short1} alt="Vertical Image" />
+        <div className="shorts">
+          <div className="darker-area">
+            <div className="phone-size-container">
+              <div className="vertical-img-placeholder">
+                <img src={images[currentImageIndex]} alt="Vertical Image" />
+              </div>
+            </div>
+            <div className="buttons-container">
+              <button className="button"><img src={like} alt="Like" /></button>
+              <button className="button"><img src={dislike} alt="Dislike" /></button>
+              <button className="button"><img src={commentbutton} alt="Comment" /></button>
+              <button className="button" onClick={handleUpClick}><img src={upbutton} alt="Up" /></button>
+              <button className="button" onClick={handleDownClick}><img src={Downbutton} alt="Down" /></button>
+            </div>
+            <div className="user-image-container">
+              <img src={userIcon} alt="User Image" className="user-image" />
+            </div>
+          </div>
         </div>
       </div>
-      <div className="buttons-container">
-        {/* Buttons for like, dislike, comments, etc. */}
-        <button className="button"><img src={like}/></button>
-        <button className="button"><img src={dislike}/></button>
-        <button className="button"><img src={commentbutton}/></button>
-        <button className="button" onClick={UpClick}><img src={upbutton}/></button>
-        <button className="button" onClick={DownClick}><img src={Downbutton}/></button>
-        
-      </div>
-      <div className="user-image-container">
-        {/* Image of the user */}
-        <img src={userIcon} alt="User Image" className="user-image" />
-      </div>
-    </div>
-  </div>
-</div>
-
-      
     </div>
   );
 };
