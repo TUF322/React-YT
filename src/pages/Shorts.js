@@ -4,7 +4,7 @@ import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
 import upbutton from './upbutton.png';
-import Downbutton from './downbutton.png';
+import downbutton from './downbutton.png';
 import like from './likebutton.png';
 import dislike from './dislikebutton.png';
 import commentbutton from './commentbutton.png';
@@ -29,7 +29,12 @@ const Shorts = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [likeCount, setLikeCount] = useState(100);
   const [dislikeCount, setDislikeCount] = useState(100);
-  const images = [Short1, Short2, Short3, Short4, Short5, Short6, Short7, Short8, Short9, Short10, Short11, Short12]; // Add more images as needed
+  const [commentCount, setCommentCount] = useState(3);
+  const [commentSidebarOpen, setCommentSidebarOpen] = useState(false);
+  const images = [
+    Short1, Short2, Short3, Short4, Short5, Short6,
+    Short7, Short8, Short9, Short10, Short11, Short12
+  ];
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -50,6 +55,20 @@ const Shorts = () => {
   const handleDislikeClick = () => {
     setDislikeCount((prevCount) => prevCount + 1);
   };
+
+  const handleCommentClick = () => {
+    setCommentSidebarOpen(true);
+  };
+
+  const closeCommentSidebar = () => {
+    setCommentSidebarOpen(false);
+  };
+
+  const stockComments = [
+    { user: 'User1', comment: 'Great video!' },
+    { user: 'User2', comment: 'Interesting content.' },
+    { user: 'User3', comment: 'Love it!' }
+  ];
 
   return (
     <div className={`main-container ${sidebarOpen ? 'sidebar-active' : ''}`}>
@@ -136,26 +155,40 @@ const Shorts = () => {
               </div>
             </div>
             <div className="buttons-container">
-            <button className="button" onClick={handleLikeClick}>
+              <button className="button" onClick={handleLikeClick}>
                 <img src={like} alt="Like" />
-                <br/>
-                <span style={{color:"#fff"}}>{likeCount}</span>
+                <br />
+                <span style={{ color: "#fff" }}>{likeCount}</span>
               </button>
               <button className="button" onClick={handleDislikeClick}>
                 <img src={dislike} alt="Dislike" />
-                <br/>
-                <span style={{color:"#fff"}}>{dislikeCount}</span>
+                <br />
+                <span style={{ color: "#fff" }}>{dislikeCount}</span>
               </button>
-              <button className="button"><img src={commentbutton} alt="Comment" /></button>
+              <button className="button" onClick={handleCommentClick}><img src={commentbutton} alt="Comment" />
+                <br />
+                <span style={{ color: "#fff" }}>{commentCount}</span>
+              </button>
               <button className="button" onClick={handleUpClick}><img src={upbutton} alt="Up" /></button>
-              <button className="button" onClick={handleDownClick}><img src={Downbutton} alt="Down" /></button>
-            </div>
-            <div className="user-image-container">
-              <img src={userIcon} alt="User Image" className="user-image" />
+              <button className="button" onClick={handleDownClick}><img src={downbutton} alt="Down" /></button>
+              <img src={userIcon} alt="User Image" className="user-image" style={{ marginLeft: "22px", marginTop: "20px" }} />
             </div>
           </div>
         </div>
       </div>
+
+      {/* Comment Sidebar */}
+      {commentSidebarOpen && (
+        <div className="comment-sidebar" onClick={closeCommentSidebar}>
+          <div className="comment-content">
+            {stockComments.map((comment, index) => (
+              <div key={index} className="comment">
+                <p><strong>{comment.user}</strong>: {comment.comment}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

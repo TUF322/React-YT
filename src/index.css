@@ -29,6 +29,7 @@ body {
 /* Adjust the margin-right of the navbar when the sidebar is active */
 .navbar.sidebar-active {
   margin-left: 280px; /* Add sidebar width to margin-right */
+  z-index: 1;
 }
 
 
@@ -390,6 +391,26 @@ body {
   }
 
   .nothere{
+    color: #fff;
+  }
+  
+  .comment-sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%; /* Adjust width as needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    overflow-y: auto;
+    z-index: 100;
+  }
+  
+  .comment-content {
+    padding: 20px;
+  }
+  
+  .comment {
+    margin-bottom: 10px;
     color: #fff;
   }
   
