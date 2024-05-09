@@ -303,7 +303,43 @@ body {
     box-shadow: 0 2px 4px rgba(213, 213, 213, 0.5);
   
   }
+
+  .shorts {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    height: 100vh; /* Make the container full height of the viewport */
+  }
   
+  .darker-area {
+    background-color: rgba(0, 0, 0, 0.5); /* Darken with semi-transparent black */
+    width: 360px; /* Adjust as needed for the phone size */
+    height: 740px; /* Adjust as needed for the phone size */
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    outline: 1px solid white; /* White outline around the darker area */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0); /* White shadow to enhance the outline */
+  }
+  
+  .vertical-img-placeholder img {
+    /* Add any additional styling for the image */
+    max-width: 100%; /* Ensure the image does not exceed its container */
+    max-height: 100%; /* Ensure the image does not exceed its container */
+    
+  }
+
+  .phone-size-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    width: 360px; /* Adjust as needed for the phone size */
+    height: 740px; /* Adjust as needed for the phone size */
+  }
+
+
+
+
 
   
  

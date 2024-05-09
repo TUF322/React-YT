@@ -5,86 +5,16 @@ import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
 import TagsRow from './TagsRow';
 import ThumbnailCard from './ThumbnailCard';
-import Shorts from './Shorts.js';
+import Short1 from './min1.jpg';
+
+
 import './index.css';
-import min1 from './min1.jpg';
-import min2 from './min2.jpg';
-import min3 from './min3.jpeg';
-import min4 from './min4.jpg';
-import min5 from './min5.jpg';
-import min6 from './min6.jpg';
-import min7 from './min7.jpg';
-import min8 from './min8.jpg';
-import min9 from './min9.png';
-import min10 from './min10.jpeg';
-import min11 from './min11.jpeg';
-import min12 from './min12.jpeg';
 
-const getRandomNumber = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
-
-const fillThumbnails = () => {
-  const thumbnailData = [];
-
-  for (let i = 0; i < 40; i++) {
-    const title = getRandomTitle();
-    const channel = getRandomChannel();
-
-    thumbnailData.push({
-      imageUrl: getRandomImageUrl(),
-      title: title,
-      channelName: channel,
-      views: getRandomNumber(1, 9).toLocaleString(),
-    });
-  }
-
-  return thumbnailData;
-};
-
-const getRandomTitle = () => {
-  const titles = ['Loren ipsum', 'GTA V', 'CS2'];
-  return titles[Math.floor(Math.random() * titles.length)];
-};
-
-const getRandomChannel = () => {
-  const channels = ['Joãosinho gaming', 'PEPE', 'BrainRot'];
-  return channels[Math.floor(Math.random() * channels.length)];
-};
-
-const getRandomImageUrl = () => {
-  const imageUrls = [min1, min2, min3, min4, min5, min6, min7, min8, min9, min10, min11, min12];
-  return imageUrls[Math.floor(Math.random() * imageUrls.length)];
-};
-
-const thumbnailData = fillThumbnails();
-
-const Navbar = () => {
+const Shorts = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filteredThumbnails, setFilteredThumbnails] = useState(thumbnailData);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
-  };
-
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-    filterThumbnails(e.target.value);
-  };
-
-  const filterThumbnails = (query) => {
-    const filtered = thumbnailData.filter(
-      (data) =>
-        data.title.toLowerCase().includes(query.toLowerCase()) ||
-        data.channelName.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredThumbnails(filtered);
-  };
-
-  const handleTagClick = (tag) => {
-    setSearchQuery(tag);
-    filterThumbnails(tag);
   };
 
   return (
@@ -111,8 +41,7 @@ const Navbar = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
-              value={searchQuery}
-              onChange={handleSearchChange}
+              
             />
           </form>
           <ul className="navbar-nav ml-auto">
@@ -148,13 +77,13 @@ const Navbar = () => {
               <li className="sd-button">Vídeos que Gostaste</li>
               <li className="separator"></li>
               <li className="sd-subh">Suscripciones</li>
-              <li className="sd-susc" onClick={() => handleTagClick('BrainRot')}>
+              <li className="sd-susc" >
                 BrainRot
               </li>
-              <li className="sd-susc" onClick={() => handleTagClick('PEPE')}>
+              <li className="sd-susc" >
                 PEPE
               </li>
-              <li className="sd-susc" onClick={() => handleTagClick('Joãosinho gaming')}>
+              <li className="sd-susc" >
                 Joãosinho gaming
               </li>
               {/* Other sidebar items... */}
@@ -162,10 +91,23 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <TagsRow handleTagClick={handleTagClick} />
+      
+      <div className="shorts-container">
+  <div className="shorts"> {/* Apply the .shorts class to this div */}
+    <div className="darker-area">
+      <div className="phone-size-container">
+        <div className="vertical-img-placeholder">
+          {/* Placeholder for vertical image */}
+          {/* You can replace this with your actual image */}
+          <img src={Short1} alt="Vertical Image" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
       
     </div>
   );
 };
 
-export default Navbar;
+export default Shorts;
