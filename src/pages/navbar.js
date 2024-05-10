@@ -97,7 +97,7 @@ const Navbar = () => {
             <img src={hamburgerBtn} alt="open sidebar" style={{ width: 'auto', height: 'auto' }} />
           )}
         </button>
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           <img src={logo} alt="logo" />
         </a>
         <button className="navbar-toggler" type="button" onClick={toggleSidebar}>
