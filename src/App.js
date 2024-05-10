@@ -9,6 +9,7 @@ import Canal from './pages/Teucanal.js';
 import History from './pages/History.js';
 import Repo from'./pages/repolist.js';
 import Later from'./pages/vermástarde.js';
+import Likes from './pages/likes.js';
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/history" element={<History />} />
         <Route path="/Repo" element={<Repo/>} />
         <Route path="/Later" element={<Later/>} />
+        <Route path="/Likes" element={<Likes/>} />
 
         {/* Other routes */}
       </Routes>

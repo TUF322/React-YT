@@ -35,7 +35,7 @@ const fillThumbnails = () => {
       imageUrl: getRandomImageUrl(),
       title: title,
       channelName: channel,
-      views: getRandomNumber(1, 9).toLocaleString(),
+      views: getRandomNumber(1, 9000000).toLocaleString(),
     });
   }
 
@@ -132,13 +132,13 @@ const Navbar = () => {
           <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
             <h2 className="sd-header">Menu</h2>
             <ul>
-              <li className="sd-button"><Link to="/" style={{color:"#fff"}}>Inicio</Link></li>
+              <li className="sd-button"><Link to="/" style={{color:"#f70505"}}>Inicio</Link></li>
 
               {/* Correctly use Link component */}
               <li className="sd-button">
                 <Link to="/Shorts" style={{color:"#fff"}}>Shorts</Link>
               </li>
-              <li className="sd-button"><Link to="/Subs" style={{color:"#f70505"}}>Suscripciones</Link></li>
+              <li className="sd-button"><Link to="/Subs" style={{color:"#fff"}}>Suscripciones</Link></li>
               <li className="separator"></li>
               <li className="sd-subh">Tu »</li>
               <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Teu Canal</Link></li>
@@ -147,6 +147,7 @@ const Navbar = () => {
               <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Meus Videos</Link></li>
               <li className="sd-button"><Link to="/Later" style={{color:"#fff"}}>Ver más tarde</Link></li>
               <li className="sd-button"><Link to="/Likes" style={{color:"#fff"}}>Vídeos que Gostaste</Link></li>
+              
               <li className="separator"></li>
               <li className="sd-subh">Canais</li>
               <li className="sd-susc" onClick={() => handleTagClick('BrainRot')}>
@@ -163,7 +164,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      
+      <TagsRow handleTagClick={handleTagClick} />
       <div className="thumbnail-container">
         {filteredThumbnails.map((data, index) => (
           <ThumbnailCard key={index} {...data} />
