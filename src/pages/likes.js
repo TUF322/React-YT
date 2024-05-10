@@ -4,7 +4,7 @@ import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
 import TagsRow from './TagsRow';
-import ThumbnailCard from './ThumbnailCard';
+import ThumbnailCard from './ThumbnailCardL.js';
 import Shorts from './Shorts.js';
 import './index.css';
 import min1 from './min1.jpg';
@@ -27,7 +27,7 @@ const getRandomNumber = (min, max) => {
 const fillThumbnails = () => {
   const thumbnailData = [];
 
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 15; i++) {
     const title = getRandomTitle();
     const channel = getRandomChannel();
 
@@ -132,7 +132,7 @@ const Navbar = () => {
           <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
             <h2 className="sd-header">Menu</h2>
             <ul>
-              <li className="sd-button"><Link to="/" style={{color:"#f70505"}}>Inicio</Link></li>
+              <li className="sd-button"><Link to="/" style={{color:"#fff"}}>Inicio</Link></li>
 
               {/* Correctly use Link component */}
               <li className="sd-button">
@@ -146,7 +146,7 @@ const Navbar = () => {
               <li className="sd-button"><Link to="/Repo" style={{color:"#fff"}}>Lista de reproduções</Link></li>
               <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Meus Videos</Link></li>
               <li className="sd-button"><Link to="/Later" style={{color:"#fff"}}>Ver más tarde</Link></li>
-              <li className="sd-button"><Link to="/Likes" style={{color:"#fff"}}>Vídeos que Gostaste</Link></li>
+              <li className="sd-button"><Link to="/Likes" style={{color:"#f70505"}}>Vídeos que Gostaste</Link></li>
               
               <li className="separator"></li>
               <li className="sd-subh">Canais</li>
@@ -164,7 +164,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <TagsRow handleTagClick={handleTagClick} />
+      
       <div className="thumbnail-container">
         {filteredThumbnails.map((data, index) => (
           <ThumbnailCard key={index} {...data} />
