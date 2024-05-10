@@ -466,6 +466,35 @@ body {
     border-radius: 15px;
     
   }
+
+  .img-banner {
+    display: block; /* Ensure the image is treated as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+    width: 100%;
+    border-radius: 15px;
+  }
+
+  .pfp{
+    width: 120px;
+    height: 100px;
+  }
+  
+  .channel-info {
+    text-align: left; /* Center the text */
+    color: #fff;
+  }
+  
+  .channel-info h1 {
+    margin-bottom: 0.5px; /* Add some space between h1 and h5 */
+  }
+  
+  hr {
+    border: 0; /* Remove default border */
+    height: 1px; /* Set the height of the line */
+    background-color: #fff; /* Color of the line */
+    margin: 20px 0; /* Add some margin top and bottom */
+  }
+  
   
 
   
