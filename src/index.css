@@ -396,23 +396,76 @@ body {
   
   .comment-sidebar {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 50%; /* Adjust width as needed */
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-    overflow-y: auto;
-    z-index: 100;
+    top: 10px;
+    right: 12.70%; /* Adjust width as needed */
+    bottom: 10px;
+    width: 460px; /* Same width as shorts container */
+    background-color: rgb(28, 28, 28); /* Darken with semi-transparent black */
+    transition: transform 0.3s ease-in-out; /* Add transition for smooth animation */
+    z-index: 1;
+    height: 90%; /* Match height with the parent container */
+    margin-top: 75px;
+    border-radius: 15px;
+    outline: 1px solid white; 
   }
   
+  
   .comment-content {
-    padding: 20px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: left;
+    margin-left: 10px;
+    margin-top: 20px;
   }
   
   .comment {
     margin-bottom: 10px;
     color: #fff;
   }
+  
+  .phone-size-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Add this CSS for animation */
+  .buttons-container.move-left {
+    transform: translateX(400px) translateY(-50%);
+    padding-bottom: 50px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .comment-input {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .comment-input-text {
+    width: 80%;
+    margin-right: 8px; /* Add some margin between input and button */
+    background-color: #100c0c;
+    border-radius: 15px;
+    height: 35px;
+    color: #fff;
+  }
+  
+  .send-button {
+    z-index: 1; /* Ensure the button is above other content */
+    background-color: #f70505;
+    color: #fff;
+    border-radius: 15px;
+    
+  }
+  
+
   
   
   

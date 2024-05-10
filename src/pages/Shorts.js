@@ -31,6 +31,11 @@ const Shorts = () => {
   const [dislikeCount, setDislikeCount] = useState(100);
   const [commentCount, setCommentCount] = useState(3);
   const [commentSidebarOpen, setCommentSidebarOpen] = useState(false);
+  const [commentValue, setCommentValue] = useState('');
+  const [UserValue, setUserValue] = useState('Tu');
+  const [comments, setComments] = useState([{ user: 'User1', comment: 'Great video!' },
+  { user: 'User2', comment: 'Interesting content.' },
+  { user: 'User3', comment: 'Love it!' }]);
   const images = [
     Short1, Short2, Short3, Short4, Short5, Short6,
     Short7, Short8, Short9, Short10, Short11, Short12
@@ -57,11 +62,21 @@ const Shorts = () => {
   };
 
   const handleCommentClick = () => {
-    setCommentSidebarOpen(true);
+    setCommentSidebarOpen((prevState) => !prevState); // Toggle comment sidebar
   };
 
-  const closeCommentSidebar = () => {
-    setCommentSidebarOpen(false);
+  const handleCommentChange = (event) => {
+    setCommentValue(event.target.value);
+  };
+
+  const handleSendComment = () => {
+    if (commentValue.trim() !== '') {
+      const newComment = { user: UserValue, comment: commentValue };
+      setComments((prevComments) => [...prevComments, newComment]);
+      setCommentValue('');
+      setUserValue('Tu');
+      setCommentCount((prevCount) => prevCount + 1);
+    }
   };
 
   const stockComments = [
@@ -94,7 +109,7 @@ const Shorts = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
-              style={{width:"500px", borderRadius:"5px"}}
+              style={{width:"500px", borderRadius:"15px"}}
               
             />
           </form>
@@ -149,12 +164,14 @@ const Shorts = () => {
       <div className="shorts-container">
         <div className="shorts">
           <div className="darker-area">
+            {/* Short image */}
             <div className="phone-size-container">
               <div className="vertical-img-placeholder">
                 <img src={images[currentImageIndex]} alt="Vertical Image" />
               </div>
             </div>
-            <div className="buttons-container">
+            {/* Buttons container */}
+            <div className={`buttons-container ${commentSidebarOpen ? 'move-left' : ''}`}>
               <button className="button" onClick={handleLikeClick}>
                 <img src={like} alt="Like" />
                 <br />
@@ -179,13 +196,23 @@ const Shorts = () => {
 
       {/* Comment Sidebar */}
       {commentSidebarOpen && (
-        <div className="comment-sidebar" onClick={closeCommentSidebar}>
+        <div className="comment-sidebar">
           <div className="comment-content">
-            {stockComments.map((comment, index) => (
+            {comments.map((comment, index) => (
               <div key={index} className="comment">
                 <p><strong>{comment.user}</strong>: {comment.comment}</p>
               </div>
             ))}
+            <div className="comment-input">
+              <input
+                className="comment-input-text"
+                type="text"
+                placeholder="Tu"
+                value={commentValue}
+                onChange={handleCommentChange}
+              />
+              <button className="send-button" onClick={handleSendComment}>Send</button>
+            </div>
           </div>
         </div>
       )}
