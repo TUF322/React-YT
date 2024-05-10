@@ -220,6 +220,7 @@ body {
     width: auto;
     height: 100px;
     margin-right: 12px;
+    border-radius: 15px;
   }
   
   .thumbnail-text {
@@ -260,6 +261,7 @@ body {
     padding: 0 10px; /* Add padding to the container */
     transition: margin-left 0.5s; /* Add transition for smooth movement */
     margin-left: 0; /* Initial margin-left value */
+    
   }
   
   

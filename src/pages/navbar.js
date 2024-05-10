@@ -138,7 +138,7 @@ const Navbar = () => {
               <li className="sd-button">
                 <Link to="/Shorts" style={{color:"#fff"}}>Shorts</Link>
               </li>
-              <li className="sd-button">Suscripciones</li>
+              <li className="sd-button"><Link to="/Subs" style={{color:"#fff"}}>Suscripciones</Link></li>
               <li className="separator"></li>
               <li className="sd-subh">Tu »</li>
               <li className="sd-button">Teu Canal</li>
@@ -148,7 +148,7 @@ const Navbar = () => {
               <li className="sd-button">Ver más tarde</li>
               <li className="sd-button">Vídeos que Gostaste</li>
               <li className="separator"></li>
-              <li className="sd-subh">Suscripciones</li>
+              <li className="sd-subh">Canais</li>
               <li className="sd-susc" onClick={() => handleTagClick('BrainRot')}>
                 BrainRot
               </li>
