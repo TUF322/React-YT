@@ -8,6 +8,7 @@ import Subs from './pages/Subs.js';
 import Canal from './pages/Teucanal.js';
 import History from './pages/History.js';
 import Repo from'./pages/repolist.js';
+import Later from'./pages/vermástarde.js';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/Canal" element={<Canal />} />
         <Route path="/history" element={<History />} />
         <Route path="/Repo" element={<Repo/>} />
+        <Route path="/Later" element={<Later/>} />
 
         {/* Other routes */}
       </Routes>

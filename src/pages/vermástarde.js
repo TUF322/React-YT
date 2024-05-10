@@ -35,7 +35,7 @@ const fillThumbnails = () => {
       imageUrl: getRandomImageUrl(),
       title: title,
       channelName: channel,
-      views: getRandomNumber(1, 9).toLocaleString(),
+      views: getRandomNumber(1, 9000000).toLocaleString(),
     });
   }
 
@@ -138,14 +138,14 @@ const Navbar = () => {
               <li className="sd-button">
                 <Link to="/Shorts" style={{color:"#fff"}}>Shorts</Link>
               </li>
-              <li className="sd-button"><Link to="/Subs" style={{color:"#f70505"}}>Suscripciones</Link></li>
+              <li className="sd-button"><Link to="/Subs" style={{color:"#fff"}}>Suscripciones</Link></li>
               <li className="separator"></li>
               <li className="sd-subh">Tu »</li>
               <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Teu Canal</Link></li>
               <li className="sd-button"><Link to="/history" style={{color:"#fff"}}>Historial</Link></li>
               <li className="sd-button"><Link to="/Repo" style={{color:"#fff"}}>Lista de reproduções</Link></li>
               <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Meus Videos</Link></li>
-              <li className="sd-button"><Link to="/Later" style={{color:"#fff"}}>Ver más tarde</Link></li>
+              <li className="sd-button"><Link to="/Later" style={{color:"#f70505"}}>Ver más tarde</Link></li>
               <li className="sd-button">Vídeos que Gostaste</li>
               <li className="separator"></li>
               <li className="sd-subh">Canais</li>
