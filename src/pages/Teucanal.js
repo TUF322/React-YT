@@ -132,7 +132,7 @@ const Navbar = () => {
           <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
             <h2 className="sd-header">Menu</h2>
             <ul>
-              <li className="sd-button"><Link to="/" style={{color:"#f70505"}}>Inicio</Link></li>
+              <li className="sd-button"><Link to="/" style={{color:"#fff"}}>Inicio</Link></li>
 
               {/* Correctly use Link component */}
               <li className="sd-button">
@@ -141,7 +141,7 @@ const Navbar = () => {
               <li className="sd-button"><Link to="/Subs" style={{color:"#fff"}}>Suscripciones</Link></li>
               <li className="separator"></li>
               <li className="sd-subh">Tu »</li>
-              <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Teu Canal</Link></li>
+              <li className="sd-button"><Link to="/Canal" style={{color:"#f70505"}}>Teu Canal</Link></li>
               <li className="sd-button">Historial</li>
               <li className="sd-button">Lista de reproduções</li>
               <li className="sd-button">Meus Videos</li>
@@ -163,13 +163,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <TagsRow handleTagClick={handleTagClick} />
-      <div className="thumbnail-container">
-        {filteredThumbnails.map((data, index) => (
-          <ThumbnailCard key={index} {...data} />
-        ))}
       </div>
-    </div>
   );
 };
 

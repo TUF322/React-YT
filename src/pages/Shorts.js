@@ -138,7 +138,7 @@ const Shorts = () => {
               <li className="sd-button"><Link to="/Subs" style={{color:"#fff"}}>Suscripciones</Link></li>
               <li className="separator"></li>
               <li className="sd-subh">Tu »</li>
-              <li className="sd-button">Teu Canal</li>
+              <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Teu Canal</Link></li>
               <li className="sd-button">Historial</li>
               <li className="sd-button">Lista de reproduções</li>
               <li className="sd-button">Meus Videos</li>
