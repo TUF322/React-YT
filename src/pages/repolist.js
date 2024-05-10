@@ -7,8 +7,6 @@ import TagsRow from './TagsRow';
 import ThumbnailCard from './ThumbnailCard';
 import Shorts from './Shorts.js';
 import './index.css';
-import banner from './channels_banner.jpg';
-import pfp from './channel-user.png';
 import min1 from './min1.jpg';
 import min2 from './min2.jpg';
 import min3 from './min3.jpeg';
@@ -29,7 +27,7 @@ const getRandomNumber = (min, max) => {
 const fillThumbnails = () => {
   const thumbnailData = [];
 
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 4; i++) {
     const title = getRandomTitle();
     const channel = getRandomChannel();
 
@@ -37,7 +35,7 @@ const fillThumbnails = () => {
       imageUrl: getRandomImageUrl(),
       title: title,
       channelName: channel,
-      views: getRandomNumber(1, 9).toLocaleString(),
+      views: getRandomNumber(1, 9000000).toLocaleString(),
     });
   }
 
@@ -61,11 +59,10 @@ const getRandomImageUrl = () => {
 
 const thumbnailData = fillThumbnails();
 
-const Channel = () => {
+const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredThumbnails, setFilteredThumbnails] = useState(thumbnailData);
-  const [buttonClicked, setButtonClicked] = useState(false); // State to track button click
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -88,10 +85,6 @@ const Channel = () => {
   const handleTagClick = (tag) => {
     setSearchQuery(tag);
     filterThumbnails(tag);
-  };
-
-  const handleButtonClick = () => {
-    setButtonClicked(!buttonClicked);
   };
 
   return (
@@ -148,9 +141,9 @@ const Channel = () => {
               <li className="sd-button"><Link to="/Subs" style={{color:"#fff"}}>Suscripciones</Link></li>
               <li className="separator"></li>
               <li className="sd-subh">Tu »</li>
-              <li className="sd-button"><Link to="/Canal" style={{color:"#f70505"}}>Teu Canal</Link></li>
+              <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Teu Canal</Link></li>
               <li className="sd-button"><Link to="/history" style={{color:"#fff"}}>Historial</Link></li>
-              <li className="sd-button"><Link to="/Repo" style={{color:"#fff"}}>Lista de reproduções</Link></li>
+              <li className="sd-button"><Link to="/Repo" style={{color:"#f70505"}}>Lista de reproduções</Link></li>
               <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Meus Videos</Link></li>
               <li className="sd-button">Ver más tarde</li>
               <li className="sd-button">Vídeos que Gostaste</li>
@@ -170,26 +163,14 @@ const Channel = () => {
           </div>
         </div>
       </nav>
-      <div className='thumbnail-container'>
-        <img src={banner} className='img-banner' alt="Banner Image" />
-        <img src={pfp} className='pfp' alt="Profile Picture" />
-        <div className="channel-info">
-          <h1 style={{ color: '#fff' }}>NIGHTRIDE</h1><br></br>
-          <h5 style={{ color: 'gray' }}>@NIGHTRIDEPL • 898 K suscriptores • 522 vídeos</h5>
-          <button className='send-button' onClick={handleButtonClick} style={{ backgroundColor: buttonClicked ? 'gray' : 'red' }}>Suscribirme</button>
-
-        </div>
-        <hr style={{ borderColor:'white' }} />
-      </div>
-
+      <TagsRow handleTagClick={handleTagClick} />
       <div className="thumbnail-container">
         {filteredThumbnails.map((data, index) => (
           <ThumbnailCard key={index} {...data} />
         ))}
       </div>
-      
     </div>
   );
 };
 
-export default Channel;
+export default Navbar;

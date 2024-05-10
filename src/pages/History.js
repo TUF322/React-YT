@@ -144,8 +144,8 @@ const Navbar = () => {
               <li className="sd-subh">Tu »</li>
               <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Teu Canal</Link></li>
               <li className="sd-button"><Link to="/history" style={{color:"#f70505"}}>Historial</Link></li>
-              <li className="sd-button">Lista de reproduções</li>
-              <li className="sd-button">Meus Videos</li>
+              <li className="sd-button"><Link to="/Repo" style={{color:"#fff"}}>Lista de reproduções</Link></li>
+              <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Meus Videos</Link></li>
               <li className="sd-button">Ver más tarde</li>
               <li className="sd-button">Vídeos que Gostaste</li>
               <li className="separator"></li>
