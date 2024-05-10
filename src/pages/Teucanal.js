@@ -149,7 +149,7 @@ const Channel = () => {
               <li className="separator"></li>
               <li className="sd-subh">Tu »</li>
               <li className="sd-button"><Link to="/Canal" style={{color:"#f70505"}}>Teu Canal</Link></li>
-              <li className="sd-button">Historial</li>
+              <li className="sd-button"><Link to="/history" style={{color:"#fff"}}>Historial</Link></li>
               <li className="sd-button">Lista de reproduções</li>
               <li className="sd-button">Meus Videos</li>
               <li className="sd-button">Ver más tarde</li>

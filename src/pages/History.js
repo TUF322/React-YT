@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
-import ThumbnailCard from './ThumbnailCard';
+import TagsRow from './TagsRow';
+import ThumbnailCard from './ThumbnailCardH.js';
+import Shorts from './Shorts.js';
 import './index.css';
 import min1 from './min1.jpg';
 import min2 from './min2.jpg';
@@ -33,7 +35,8 @@ const fillThumbnails = () => {
       imageUrl: getRandomImageUrl(),
       title: title,
       channelName: channel,
-      views: getRandomNumber(1, 9000000).toLocaleString(),
+      
+      views: getRandomNumber(1, 900000).toLocaleString(),
     });
   }
 
@@ -111,7 +114,7 @@ const Navbar = () => {
               aria-label="Search"
               value={searchQuery}
               onChange={handleSearchChange}
-              style={{ width: '500px', borderRadius: '5px' }}
+              style={{width:"500px", borderRadius:"5px"}}
             />
           </form>
           <ul className="navbar-nav ml-auto">
@@ -130,31 +133,17 @@ const Navbar = () => {
           <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
             <h2 className="sd-header">Menu</h2>
             <ul>
-              <li className="sd-button">
-                <Link to="/" style={{ color: '#f70505' }}>
-                  Inicio
-                </Link>
-              </li>
+              <li className="sd-button"><Link to="/" style={{color:"#fff"}}>Inicio</Link></li>
 
               {/* Correctly use Link component */}
               <li className="sd-button">
-                <Link to="/Shorts" style={{ color: '#fff' }}>
-                  Shorts
-                </Link>
+                <Link to="/Shorts" style={{color:"#fff"}}>Shorts</Link>
               </li>
-              <li className="sd-button">
-                <Link to="/Subs" style={{ color: '#fff' }}>
-                  Suscripciones
-                </Link>
-              </li>
+              <li className="sd-button"><Link to="/Subs" style={{color:"#fff"}}>Suscripciones</Link></li>
               <li className="separator"></li>
               <li className="sd-subh">Tu »</li>
-              <li className="sd-button">
-                <Link to="/Canal" style={{ color: '#fff' }}>
-                  Teu Canal
-                </Link>
-              </li>
-              <li className="sd-button">Historial</li>
+              <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Teu Canal</Link></li>
+              <li className="sd-button"><Link to="/history" style={{color:"#f70505"}}>Historial</Link></li>
               <li className="sd-button">Lista de reproduções</li>
               <li className="sd-button">Meus Videos</li>
               <li className="sd-button">Ver más tarde</li>
@@ -175,13 +164,11 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-
+      
       <div className="thumbnail-container">
-        <div className="thumbnails-line">
-          {filteredThumbnails.map((data, index) => (
-            <ThumbnailCard key={index} {...data} />
-          ))}
-        </div>
+        {filteredThumbnails.map((data, index) => (
+          <ThumbnailCard key={index} {...data} />
+        ))}
       </div>
     </div>
   );
