@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
@@ -47,8 +47,6 @@ const getRandomTitle = () => {
   return titles[Math.floor(Math.random() * titles.length)];
 };
 
-
-
 const getRandomChannel = () => {
   const channels = ['Joãosinho gaming', 'PEPE', 'BrainRot'];
   return channels[Math.floor(Math.random() * channels.length)];
@@ -59,13 +57,30 @@ const getRandomImageUrl = () => {
   return imageUrls[Math.floor(Math.random() * imageUrls.length)];
 };
 
-const thumbnailData = fillThumbnails();
-
 const Video = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredThumbnails, setFilteredThumbnails] = useState(thumbnailData);
+  const [filteredThumbnails, setFilteredThumbnails] = useState([]);
   const [buttonClicked, setButtonClicked] = useState(false); // State to track button click
+  const [initialChannel, setInitialChannel] = useState('');
+  const [initialTitle, setInitialTitle] = useState('');
+  const [initialViews, setInitialViews] = useState('');
+  
+  // Declare thumbnailData outside useEffect to make it accessible
+  const thumbnailData = fillThumbnails();
+
+  useEffect(() => {
+    setFilteredThumbnails(thumbnailData);
+
+    const initialTitle = getRandomTitle();
+    setInitialTitle(initialTitle);
+
+    const initialChannel = getRandomChannel();
+    setInitialChannel(initialChannel);
+
+    const initialViews = getRandomNumber(1, 9000000).toLocaleString();
+    setInitialViews(initialViews);
+  }, []);
 
   const handleButtonClick = () => {
     setButtonClicked(!buttonClicked);
@@ -178,11 +193,11 @@ const Video = () => {
           </div>
           <div className="video-details">
             {/* Title and description */}
-            <h1 className="video-title">{getRandomChannel()} | {getRandomTitle()}</h1>
-            <img src={pfp} className='pfp' alt="Profile Picture" style={{ height: '70px', width: '70px' }} /><p className="video-views" style={{ display: 'inline-block', verticalAlign: 'middle', marginLeft: '5px' }}>10m.</p><button className='send-button' onClick={handleButtonClick} style={{ backgroundColor: buttonClicked ? 'gray' : 'red' }}>Suscribirme</button>
+            <h1 className="video-title">{initialChannel} | {initialTitle}</h1>
+            <img src={pfp} className='pfp' alt="Profile Picture" style={{ height: '70px', width: '70px' }} /><p className="video-views" style={{ display: 'inline-block', verticalAlign: 'middle', marginLeft: '5px' }}>{initialViews}</p><button className='send-button' onClick={handleButtonClick} style={{ backgroundColor: buttonClicked ? 'gray' : 'red' }}>Suscribirme</button>
 
 
-            <p className="video-views">Views: {getRandomNumber(1, 9000000).toLocaleString()}</p>
+            <p className="video-views">Views: {initialViews}</p>
             <p className="video-description">
               This is a sample video description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Sed eget efficitur libero. Integer rutrum, nisi eget congue fermentum, 
