@@ -10,6 +10,8 @@ import History from './pages/History.js';
 import Repo from'./pages/repolist.js';
 import Later from'./pages/vermástarde.js';
 import Likes from './pages/likes.js';
+import Meusvideos from './pages/Meus-videos.js';
+
 
 
 const App = () => {
@@ -24,6 +26,7 @@ const App = () => {
         <Route path="/Repo" element={<Repo/>} />
         <Route path="/Later" element={<Later/>} />
         <Route path="/Likes" element={<Likes/>} />
+        <Route path="/Meus_Videos" element={<Meusvideos/>} />
 
         {/* Other routes */}
       </Routes>
