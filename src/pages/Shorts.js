@@ -109,7 +109,7 @@ const Shorts = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
-              style={{width:"500px", borderRadius:"15px"}}
+              style={{width:"500px", borderRadius:"5px"}}
               
             />
           </form>

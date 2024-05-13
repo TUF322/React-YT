@@ -37,7 +37,7 @@ const fillThumbnails = () => {
       imageUrl: getRandomImageUrl(),
       title: title,
       channelName: channel,
-      views: getRandomNumber(1, 9).toLocaleString(),
+      views: getRandomNumber(1, 900000000).toLocaleString(),
     });
   }
 
