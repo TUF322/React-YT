@@ -18,7 +18,7 @@ import min9 from './min9.png';
 import min10 from './min10.jpeg';
 import min11 from './min11.jpeg';
 import min12 from './min12.jpeg';
-import Navbar from './navbar'; // Import the Navbar component
+import pfp from './channel-user.png';
 
 const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -47,6 +47,8 @@ const getRandomTitle = () => {
   return titles[Math.floor(Math.random() * titles.length)];
 };
 
+
+
 const getRandomChannel = () => {
   const channels = ['Joãosinho gaming', 'PEPE', 'BrainRot'];
   return channels[Math.floor(Math.random() * channels.length)];
@@ -63,6 +65,11 @@ const Video = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredThumbnails, setFilteredThumbnails] = useState(thumbnailData);
+  const [buttonClicked, setButtonClicked] = useState(false); // State to track button click
+
+  const handleButtonClick = () => {
+    setButtonClicked(!buttonClicked);
+  };
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -133,7 +140,6 @@ const Video = () => {
             <h2 className="sd-header">Menu</h2>
             <ul>
               <li className="sd-button"><Link to="/" style={{color:"#f70505"}}>Inicio</Link></li>
-
               {/* Correctly use Link component */}
               <li className="sd-button">
                 <Link to="/Shorts" style={{color:"#fff"}}>Shorts</Link>
@@ -164,37 +170,34 @@ const Video = () => {
         </div>
       </nav>
       
-      
       <div className="video-page-container">
-        <div className="video-player">
-          {/* Video display area */}
-          
-          <img src={min1} alt="Video Thumbnail" style={{ width: '100%', height: 'auto' }} />
+        <div className="video-container">
+          <div className="video-player">
+            {/* Video display area */}
+            <img src={getRandomImageUrl()} alt="Video Thumbnail" style={{ width: '100%', height: 'auto', borderRadius:'15px' }} />
+          </div>
+          <div className="video-details">
+            {/* Title and description */}
+            <h1 className="video-title">{getRandomChannel()} | {getRandomTitle()}</h1>
+            <img src={pfp} className='pfp' alt="Profile Picture" style={{ height: '70px', width: '70px' }} /><p className="video-views" style={{ display: 'inline-block', verticalAlign: 'middle', marginLeft: '5px' }}>10m.</p><button className='send-button' onClick={handleButtonClick} style={{ backgroundColor: buttonClicked ? 'gray' : 'red' }}>Suscribirme</button>
+
+
+            <p className="video-views">Views: {getRandomNumber(1, 9000000).toLocaleString()}</p>
+            <p className="video-description">
+              This is a sample video description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Sed eget efficitur libero. Integer rutrum, nisi eget congue fermentum, 
+              dui felis cursus dolor, non eleifend quam nisi nec est.
+            </p>
+          </div>
         </div>
+        
         <div className="video-sidebar">
-        {/* Thumbnail column */}
-        {filteredThumbnails.map((data, index) => (
-          <ThumbnailCard key={index} {...data} />
-        ))}
-      </div>
-        <div className="video-details">
-          {/* Title and description */}
-          <h1 className="video-title">Sample Video Title</h1>
-          <p className="video-views">1,000,000 views</p>
-          <p className="video-description">
-            This is a sample video description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Sed eget efficitur libero. Integer rutrum, nisi eget congue fermentum, 
-            dui felis cursus dolor, non eleifend quam nisi nec est.
-          </p>
-        </div>
-        <div className="comment-section">
-          {/* Comments section */}
-          <h2>Comments</h2>
-          {/* Display comments here */}
+          {/* Thumbnail column */}
+          {filteredThumbnails.map((data, index) => (
+            <ThumbnailCard key={index} {...data} />
+          ))}
         </div>
       </div>
-      
-      
     </div>
   );
 };
