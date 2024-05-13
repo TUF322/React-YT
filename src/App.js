@@ -11,6 +11,7 @@ import Repo from'./pages/repolist.js';
 import Later from'./pages/vermástarde.js';
 import Likes from './pages/likes.js';
 import Meusvideos from './pages/Meus-videos.js';
+import VideoPage from './pages/video.js';
 
 
 
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/Later" element={<Later/>} />
         <Route path="/Likes" element={<Likes/>} />
         <Route path="/Meus_Videos" element={<Meusvideos/>} />
+        <Route path="/Videopage" element={<VideoPage/>} />
 
         {/* Other routes */}
       </Routes>

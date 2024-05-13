@@ -303,7 +303,52 @@ body {
     box-shadow: 0 2px 4px rgba(213, 213, 213, 0.5);
   
   }
-  
+
+/* index.css */
+
+/* Add styles for the video page layout */
+
+.video-page-container {
+  display: flex;
+  flex-direction: column; /* Arrange elements in a column */
+  justify-content: flex-start; /* Align content to the left of the page */
+  max-width: 1400px;
+  padding: 25px; /* Increase padding */
+  margin: 0 10px; /* Adjust margin */
+}
+
+.video-player {
+  width: 90%; /* Video player takes full width */
+}
+
+.video-details {
+  width: 90%; /* Details take full width */
+}
+
+.comment-section {
+  width: 90%; /* Stretch the comment section to fill available space */
+  margin-top: 20px; /* Add some space between details and comments */
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.comment-section h2 {
+  margin-bottom: 10px;
+}
+
+.video-sidebar {
+  width: 300px; /* Adjust the width as needed */
+  float: right; /* Float the sidebar to the right */
+  margin-top: 20px; /* Add some margin from the top */
+  padding: 10px; /* Add padding for spacing */
+  justify-content: flex-end; /* Set a background color */
+  border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+/* Adjust styles for video player, details, and comments */
+
+
+
 
   
  
