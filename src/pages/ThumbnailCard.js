@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const ThumbnailCard = ({ imageUrl, title, channelName, views }) => {
   return (
     <div className="thumbnail-card">

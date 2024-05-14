@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ThumbnailCard = ({ imageUrl, title, channelName, views }) => {
   return (
     <div className="thumbnail-card">
+      <Link to="/Videopage" style={{ textDecoration: 'none', color: 'inherit' }}>
       <img
         src={imageUrl}
         alt={title}
@@ -15,6 +17,7 @@ const ThumbnailCard = ({ imageUrl, title, channelName, views }) => {
         <p className="thumbnail-views">{views} views</p>
         <p className="thumbnail-views">Visto</p> {/* Add 'Visto' text here */}
       </div>
+      </Link>
     </div>
   );
 }
