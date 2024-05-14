@@ -19,6 +19,8 @@ import min10 from './min10.jpeg';
 import min11 from './min11.jpeg';
 import min12 from './min12.jpeg';
 import pfp from './channel-user.png';
+import like from './likebutton.png';
+import dislike from './dislikebutton.png';
 
 const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -58,32 +60,136 @@ const getRandomImageUrl = () => {
 };
 
 const Video = () => {
+
+  const initialComments = [
+    { text: "Maria@gmail.com: This is a great video!", likes: 0, dislikes: 0, likeClicked: false, dislikeClicked: false },
+    { text: "João@gmail.com: I really enjoyed watching this.", likes: 0, dislikes: 0, likeClicked: false, dislikeClicked: false },
+    { text: "Carlos@gmail.com: Keep up the good work!", likes: 0, dislikes: 0, likeClicked: false, dislikeClicked: false }
+  ];
+  
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredThumbnails, setFilteredThumbnails] = useState([]);
   const [buttonClicked, setButtonClicked] = useState(false); // State to track button click
-  const [initialChannel, setInitialChannel] = useState('');
-  const [initialTitle, setInitialTitle] = useState('');
-  const [initialViews, setInitialViews] = useState('');
+  const [videoInfo, setVideoInfo] = useState({}); // State to track video info
+  const [mainImageUrl, setMainImageUrl] = useState('');
+  const [subscriptionCount, setSubscriptionCount] = useState(getRandomNumber(100, 10000000)); // Random initial subscription count
+  const [comment, setComment] = useState('');
+  const [comments, setComments] = useState(initialComments);
+  const [videoLikes, setVideoLikes] = useState(0);
+  const [videoDislikes, setVideoDislikes] = useState(0);
+  const [likeClicked, setLikeClicked] = useState(false);
+  const [dislikeClicked, setDislikeClicked] = useState(false);
+
   
-  // Declare thumbnailData outside useEffect to make it accessible
-  const thumbnailData = fillThumbnails();
+
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const handleSendComment = () => {
+    if (comment.trim() !== '') {
+      // Construct the comment with user email
+      const newComment = `User@gmail.com: ${comment}`;
+      setComments([...comments, { text: newComment, likes: 0, dislikes: 0, likeClicked: false, dislikeClicked: false }]);
+      setComment('');
+    }
+  };
+
+  const handleLike = () => {
+    if (!likeClicked) {
+      setVideoLikes(videoLikes + 1);
+      setLikeClicked(true);
+      setDislikeClicked(false);
+      if (dislikeClicked) {
+        setVideoDislikes(videoDislikes - 1);
+      }
+    } else {
+      setVideoLikes(videoLikes - 1);
+      setLikeClicked(false);
+    }
+  };
+  
+  const handleDislike = () => {
+    if (!dislikeClicked) {
+      setVideoDislikes(videoDislikes + 1);
+      setDislikeClicked(true);
+      setLikeClicked(false);
+      if (likeClicked) {
+        setVideoLikes(videoLikes - 1);
+      }
+    } else {
+      setVideoDislikes(videoDislikes - 1);
+      setDislikeClicked(false);
+    }
+  };
+
+  const handleCommentLike = (index) => {
+    const updatedComments = [...comments];
+    const comment = updatedComments[index];
+    if (!comment.likeClicked) {
+      comment.likes += 1;
+      comment.likeClicked = true;
+      comment.dislikeClicked = false;
+      // Reset dislikes if they were clicked previously
+      comment.dislikes = 0;
+    } else {
+      comment.likes -= 1;
+      comment.likeClicked = false;
+    }
+    setComments(updatedComments);
+  };
+  
+  const handleCommentDislike = (index) => {
+    const updatedComments = [...comments];
+    const comment = updatedComments[index];
+    if (!comment.dislikeClicked) {
+      comment.dislikes += 1;
+      comment.dislikeClicked = true;
+      comment.likeClicked = false;
+      // Reset likes if they were clicked previously
+      comment.likes = 0;
+    } else {
+      comment.dislikes -= 1;
+      comment.dislikeClicked = false;
+    }
+    setComments(updatedComments);
+  };
+  
 
   useEffect(() => {
+    const thumbnailData = fillThumbnails();
     setFilteredThumbnails(thumbnailData);
 
-    const initialTitle = getRandomTitle();
-    setInitialTitle(initialTitle);
+    // Generate initial video info
+    const initialInfo = generateVideoInfo();
+    setVideoInfo(initialInfo);
 
-    const initialChannel = getRandomChannel();
-    setInitialChannel(initialChannel);
-
-    const initialViews = getRandomNumber(1, 9000000).toLocaleString();
-    setInitialViews(initialViews);
+    // Generate main image URL on component mount
+    setMainImageUrl(getRandomImageUrl());
   }, []);
+
+  const generateVideoInfo = () => {
+    const title = getRandomTitle();
+    const channel = getRandomChannel();
+    const views = getRandomNumber(1, 9000000).toLocaleString();
+
+    return {
+      title: title,
+      channelName: channel,
+      views: views,
+    };
+  };
 
   const handleButtonClick = () => {
     setButtonClicked(!buttonClicked);
+    // Increase or decrease subscription count based on button color
+    if (buttonClicked) {
+      setSubscriptionCount(subscriptionCount - 1);
+    } else {
+      setSubscriptionCount(subscriptionCount + 1);
+    }
   };
 
   const toggleSidebar = () => {
@@ -96,7 +202,7 @@ const Video = () => {
   };
 
   const filterThumbnails = (query) => {
-    const filtered = thumbnailData.filter(
+    const filtered = fillThumbnails().filter(
       (data) =>
         data.title.toLowerCase().includes(query.toLowerCase()) ||
         data.channelName.toLowerCase().includes(query.toLowerCase())
@@ -135,7 +241,7 @@ const Video = () => {
               aria-label="Search"
               value={searchQuery}
               onChange={handleSearchChange}
-              style={{width:"500px", borderRadius:"5px"}}
+              style={{ width: '500px', borderRadius: '5px' }}
             />
           </form>
           <ul className="navbar-nav ml-auto">
@@ -154,20 +260,36 @@ const Video = () => {
           <div className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
             <h2 className="sd-header">Menu</h2>
             <ul>
-              <li className="sd-button"><Link to="/" style={{color:"#f70505"}}>Inicio</Link></li>
+              <li className="sd-button">
+                <Link to="/" style={{ color: "#f70505" }}>Inicio</Link>
+              </li>
               {/* Correctly use Link component */}
               <li className="sd-button">
-                <Link to="/Shorts" style={{color:"#fff"}}>Shorts</Link>
+                <Link to="/Shorts" style={{ color: "#fff" }}>Shorts</Link>
               </li>
-              <li className="sd-button"><Link to="/Subs" style={{color:"#fff"}}>Suscripciones</Link></li>
+              <li className="sd-button">
+                <Link to="/Subs" style={{ color: "#fff" }}>Suscripciones</Link>
+              </li>
               <li className="separator"></li>
               <li className="sd-subh">Tu »</li>
-              <li className="sd-button"><Link to="/Canal" style={{color:"#fff"}}>Teu Canal</Link></li>
-              <li className="sd-button"><Link to="/history" style={{color:"#fff"}}>Historial</Link></li>
-              <li className="sd-button"><Link to="/Repo" style={{color:"#fff"}}>Lista de reproduções</Link></li>
-              <li className="sd-button"><Link to="/Meus_videos" style={{color:"#fff"}}>Meus Videos</Link></li>
-              <li className="sd-button"><Link to="/Later" style={{color:"#fff"}}>Ver más tarde</Link></li>
-              <li className="sd-button"><Link to="/Likes" style={{color:"#fff"}}>Vídeos que Gostaste</Link></li>
+              <li className="sd-button">
+                <Link to="/Canal" style={{ color: "#fff" }}>Teu Canal</Link>
+              </li>
+              <li className="sd-button">
+                <Link to="/history" style={{ color: "#fff" }}>Historial</Link>
+              </li>
+              <li className="sd-button">
+                <Link to="/Repo" style={{ color: "#fff" }}>Lista de reproduções</Link>
+              </li>
+              <li className="sd-button">
+                <Link to="/Meus_videos" style={{ color: "#fff" }}>Meus Videos</Link>
+              </li>
+              <li className="sd-button">
+                <Link to="/Later" style={{ color: "#fff" }}>Ver más tarde</Link>
+              </li>
+              <li className="sd-button">
+                <Link to="/Likes" style={{ color: "#fff" }}>Vídeos que Gostaste</Link>
+              </li>
               <li className="separator"></li>
               <li className="sd-subh">Canais</li>
               <li className="sd-susc" onClick={() => handleTagClick('BrainRot')}>
@@ -184,28 +306,75 @@ const Video = () => {
           </div>
         </div>
       </nav>
-      
+
       <div className="video-page-container">
         <div className="video-container">
           <div className="video-player">
             {/* Video display area */}
-            <img src={getRandomImageUrl()} alt="Video Thumbnail" style={{ width: '100%', height: 'auto', borderRadius:'15px' }} />
+            <img src={mainImageUrl} alt="Video Thumbnail" style={{ width: '100%', height: 'auto', borderRadius: '15px' }} />
           </div>
           <div className="video-details">
             {/* Title and description */}
-            <h1 className="video-title">{initialChannel} | {initialTitle}</h1>
-            <img src={pfp} className='pfp' alt="Profile Picture" style={{ height: '70px', width: '70px' }} /><p className="video-views" style={{ display: 'inline-block', verticalAlign: 'middle', marginLeft: '5px' }}>{initialViews}</p><button className='send-button' onClick={handleButtonClick} style={{ backgroundColor: buttonClicked ? 'gray' : 'red' }}>Suscribirme</button>
-
-
-            <p className="video-views">Views: {initialViews}</p>
+            <h1 className="video-title">{videoInfo.channelName} | {videoInfo.title}</h1>
+            <img src={pfp} className='pfp' alt="Profile Picture" style={{ height: '70px', width: '70px' }} />
+            <p className="video-views" style={{ display: 'inline-block', verticalAlign: 'middle', marginLeft: '10px', marginTop: '12px', marginRight: '10px' }}>{subscriptionCount}</p>
+            <button className='send-button' onClick={handleButtonClick} style={{ backgroundColor: buttonClicked ? 'gray' : 'red' }}>Suscribirme</button><div style={{ display: 'inline-block', marginLeft: '10px' }}>
+              <button onClick={handleLike} style={{backgroundColor:"#100c0c",borderRadius:'15px'}}>
+                <img src={like} alt="like button" style={{ width: '30px', height: '30px' }} />
+              </button>
+              <span>{videoLikes}</span>
+              <button onClick={handleDislike} style={{backgroundColor:"#100c0c",borderRadius:'15px'}}>
+                <img src={dislike} alt="dislike button" style={{ width: '30px', height: '30px' }} />
+              </button>
+              <span>{videoDislikes}</span>
+            </div>
+            <p className="video-views">Views: {videoInfo.views}</p>
             <p className="video-description">
-              This is a sample video description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-              Sed eget efficitur libero. Integer rutrum, nisi eget congue fermentum, 
+              This is a sample video description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed eget efficitur libero. Integer rutrum, nisi eget congue fermentum,
               dui felis cursus dolor, non eleifend quam nisi nec est.
             </p>
+            
+          </div>
+          {/* New comment box */}
+          <div className="comment-section">
+            <h2>Comments</h2>
+            <div>
+              <input
+                type="text"
+                placeholder="Write a comment..."
+                value={comment}
+                onChange={handleCommentChange}
+                style={{ width: '100%', padding: '8px', marginBottom: '8px' }}
+                className='form-control-mr-sm-2'
+              />
+              <button className="btn btn-primary" onClick={handleSendComment}>
+                Send
+              </button>
+            </div>
+            {/* Display stock comments */}
+            <div className='comment-chat'>
+        {comments.map((comment, index) => (
+          <div key={index} className="comment-item">
+            <div className="comment-text">
+              <img src={userIcon} alt="User Icon" style={{ height: '30px', width: '30px', borderRadius: '15px', marginRight: '10px' }} /> 
+              <span>{comment.text}</span>
+            </div>
+            <div className="comment-actions">
+              <button className="comment-actions-buttons" style={{backgroundColor:"#100c0c", borderRadius:'15px'}} onClick={() => handleCommentLike(index)}>
+                <img src={like} alt="like button" style={{ width: '20px', height: '20px' }} />
+              </button>
+              <span>{comment.likes}</span>
+              <button className="comment-actions-buttons" style={{backgroundColor:"#100c0c", borderRadius:'15px', margin:'5px'}}  onClick={() => handleCommentDislike(index)}>
+                <img src={dislike} alt="dislike button" style={{ width: '20px', height: '20px' }} />
+              </button>
+              <span>{comment.dislikes}</span>
+            </div>
+          </div>
+        ))}
+      </div>
           </div>
         </div>
-        
         <div className="video-sidebar">
           {/* Thumbnail column */}
           {filteredThumbnails.map((data, index) => (
