@@ -316,7 +316,7 @@ const Video = () => {
           <div className="video-details">
             {/* Title and description */}
             <h1 className="video-title">{videoInfo.channelName} | {videoInfo.title}</h1>
-            <img src={pfp} className='pfp' alt="Profile Picture" style={{ height: '70px', width: '70px' }} />
+            <img src={pfp} className='pfp' alt="Profile Picture" style={{ height: '70px', width: '70px' }} /><p className='video-title' style={{ display: 'inline-block', marginLeft: '10px' }}>{videoInfo.channelName}</p>
             <p className="video-views" style={{ display: 'inline-block', verticalAlign: 'middle', marginLeft: '10px', marginTop: '12px', marginRight: '10px' }}>{subscriptionCount}</p>
             <button className='send-button' onClick={handleButtonClick} style={{ backgroundColor: buttonClicked ? 'gray' : 'red' }}>Suscribirme</button><div style={{ display: 'inline-block', marginLeft: '10px' }}>
               <button onClick={handleLike} style={{backgroundColor:"#100c0c",borderRadius:'15px'}}>
