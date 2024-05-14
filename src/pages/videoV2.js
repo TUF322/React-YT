@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
-import TagsRow from './TagsRow';
+
 import ThumbnailCard from './ThumbnailCard';
 import './index.css'; // Make sure to import the CSS file if needed
 import min1 from './min1.jpg';

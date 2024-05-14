@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
-import TagsRow from './TagsRow';
+
 import ThumbnailCard from './ThumbnailCard';
-import Shorts from './Shorts.js';
+
 import './index.css';
 import banner from './channels_banner.jpg';
 import pfp from './channel-user.png';

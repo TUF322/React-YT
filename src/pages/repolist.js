@@ -5,7 +5,7 @@ import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
 import TagsRow from './TagsRow';
 import ThumbnailCard from './ThumbnailCardR.js';
-import Shorts from './Shorts.js';
+
 import './index.css';
 import min1 from './min1.jpg';
 import min2 from './min2.jpg';

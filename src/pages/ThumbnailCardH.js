@@ -1,5 +1,5 @@
 import React from 'react';
-import like from './clockico-removebg-preview.png';
+
 import { Link } from 'react-router-dom';
 import './index.css'
 

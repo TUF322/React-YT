@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import logo from './bg-yt-logo.png';
 import userIcon from './userimg.png';
 import hamburgerBtn from './hamburger-btn2.png';
-import TagsRow from './TagsRow';
+
 import ThumbnailCard from './ThumbnailCardS.js';
-import Shorts from './Shorts.js';
+
 import './index.css';
 import min1 from './min1.jpg';
 import min2 from './min2.jpg';
