@@ -356,6 +356,14 @@ body {
   background-color: #100c0c;
 }
 
+.red-line {
+  border-bottom: 2px solid red;
+  width: 100%;
+  margin-top: 5px; /* Adjust as needed */
+  z-index: 1;
+}
+
+
 /*  */
 
 

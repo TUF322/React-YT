@@ -14,7 +14,7 @@ const TagsRow = ({ handleTagClick }) => {
     <div className="tags-row">
       {filledTags.map((tag, index) => (
         <div key={index} className="card" onClick={() => handleTag(tag)}>
-          <div className="card-body">
+          <div className="card-body" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <h5 className="card-title">{tag}</h5>
           </div>
         </div>
