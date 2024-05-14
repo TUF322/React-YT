@@ -12,6 +12,7 @@ import Later from'./pages/vermástarde.js';
 import Likes from './pages/likes.js';
 import Meusvideos from './pages/Meus-videos.js';
 import VideoPage from './pages/video.js';
+import VideoPageV2 from './pages/videoV2.js';
 
 
 
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/Likes" element={<Likes/>} />
         <Route path="/Meus_Videos" element={<Meusvideos/>} />
         <Route path="/Videopage" element={<VideoPage/>} />
+        <Route path="/VideopageV2" element={<VideoPageV2/>} />
 
         {/* Other routes */}
       </Routes>
