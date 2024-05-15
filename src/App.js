@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Routes } from 'react-router-dom
 
 
 import Home from './pages/navbar.js'; // Importing the ToggleSidebar component
-import Shorts from './pages/Shorts.js'; // Importing the Shorts component
+import Shorts from './pages/Shorts.jsx'; // Importing the Shorts component
 import Subs from './pages/Subs.js';
 import Canal from './pages/Teucanal.js';
 import History from './pages/History.js';
