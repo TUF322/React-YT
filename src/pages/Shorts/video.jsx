@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import upbutton from "../upbutton.png";
-import downbutton from "../downbutton.png";
-import like from "../likebutton.png";
-import dislike from "../dislikebutton.png";
-import commentbutton from "../commentbutton.png";
+import styled from 'styled-components';
+import ShortControls from "./controls"; // Import the ShortControls component
 import Short1 from "../min1.jpg";
 import Short2 from "../min2.jpg";
 import Short3 from "../min3.jpeg";
@@ -16,9 +13,6 @@ import Short9 from "../min9.png";
 import Short10 from "../min10.jpeg";
 import Short11 from "../min11.jpeg";
 import Short12 from "../min12.jpeg";
-import "../index.css";
-import userIcon from "../userimg.png";
-import styled from 'styled-components';
 
 export const ShortsContainer = styled.div`
   width: 100%;
@@ -64,35 +58,8 @@ export const VerticalImagePlaceholder = styled.div`
   height: 100%;
 `;
 
-export const ButtonsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  ${({ commentSidebarOpen }) => commentSidebarOpen && `
-    transform: translateX(-50px);
-  `}
-`;
-
-export const Button = styled.button`
-  display: inline-block;
-  width: 100%;
-  padding: 10px 16px;
-  color: #fff;
-  background-color: #100c0c;
-  border-radius: 20px;
-  cursor: pointer;
-  text-decoration: none;
-  margin-bottom: 10px;
-  font-size: 10px;
-`;
-
 export const Image = styled.img`
-  width: 100%;
-`;
-
-export const Imagebutton = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 100%; /* Adjust as needed */
 `;
 
 const VideoSection = () => {
@@ -136,15 +103,15 @@ const VideoSection = () => {
     );
   };
 
-  const handleLikeClick = (index) => {
-    // Your like logic here
-    console.log("clicked");
+  const handleLikeClick = () => {
+    setLikeCount((prevCount) => (prevCount === 0 ? 1 : 0));
   };
+  
+  const handleDislikeClick = () => {
+    setDislikeCount((prevCount) => (prevCount === 0 ? 1 : 0));
+  };
+  
 
-  const handleDislikeClick = (index) => {
-    // Your dislike logic here
-    console.log("clicked");
-  };
   const handleCommentClick = () => {
     setCommentSidebarOpen((prevState) => !prevState);
   };
@@ -160,30 +127,17 @@ const VideoSection = () => {
           </PhoneSizeContainer>
         </DarkerArea>
       </ShortsWrapper>
-      <ButtonsContainer commentSidebarOpen={commentSidebarOpen}>
-        <Button onClick={() => handleLikeClick(currentImageIndex)}>
-          <Imagebutton src={like} alt="Like" />
-          <br />
-          <span style={{ color: "#fff" }}>{likeCount}</span>
-        </Button>
-        <Button onClick={() => handleDislikeClick(currentImageIndex)}>
-          <Imagebutton src={dislike} alt="Dislike" />
-          <br />
-          <span style={{ color: "#fff" }}>{dislikeCount}</span>
-        </Button>
-        <Button onClick={() => handleUpClick()}>
-          <Imagebutton src={upbutton} alt="Up" />
-        </Button>
-        <Button onClick={() => handleDownClick()}>
-          <Imagebutton src={downbutton} alt="Down" />
-        </Button>
-        <Button onClick={() => handleCommentClick()}>
-          <Imagebutton src={commentbutton} alt="Comment" />
-          <br />
-          <span style={{ color: "#fff" }}>{commentCount}</span>
-        </Button>
-        {/* Other buttons */}
-      </ButtonsContainer>
+      <ShortControls
+        handleLikeClick={handleLikeClick}
+        handleDislikeClick={handleDislikeClick}
+        handleUpClick={handleUpClick}
+        handleDownClick={handleDownClick}
+        handleCommentClick={handleCommentClick}
+        likeCount={likeCount}
+        dislikeCount={dislikeCount}
+        commentCount={commentCount}
+        commentSidebarOpen={commentSidebarOpen}
+      />
     </ShortsContainer>
   );
 };
