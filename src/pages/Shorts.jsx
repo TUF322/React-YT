@@ -5,6 +5,7 @@ import userIcon from "./userimg.png";
 import hamburgerBtn from "./hamburger-btn2.png";
 import styled from "styled-components";
 import VideoSection from "./Shorts/video.jsx";
+
 import CommentSection from "./Shorts/comments.jsx";
 
 import "./index.css";

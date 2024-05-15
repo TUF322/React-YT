@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import like from '../likebutton.png';
 import dislike from '../dislikebutton.png';
+import VideoSection from "./video";
 
 import upbutton from '../upbutton.png';
 import downbutton from '../downbutton.png';
@@ -54,19 +55,21 @@ const ShortControls = ({
     if (!likeClicked) {
       handleLikeClick();
       setLikeClicked(true);
-      setDislikeClicked(false);
+      setDislikeClicked(false); // Ensure only one button is active
     } else {
-      handleDislikeClick();
+      // If already liked, toggle off
+      handleLikeClick();
       setLikeClicked(false);
     }
   };
-
+  
   const handleDislike = () => {
     if (!dislikeClicked) {
       handleDislikeClick();
       setDislikeClicked(true);
-      setLikeClicked(false);
+      setLikeClicked(false); // Ensure only one button is active
     } else {
+      // If already disliked, toggle off
       handleDislikeClick();
       setDislikeClicked(false);
     }
@@ -74,12 +77,12 @@ const ShortControls = ({
 
   return (
     <ButtonsContainer commentSidebarOpen={commentSidebarOpen}>
-      <Button onClick={handleLike}>
+      <Button onClick={handleLike} disabled={likeClicked}>
         <Imagebutton src={like} alt="Like" />
         <br />
         <span style={{ color: "#fff" }}>{likeClicked ? 1 : likeCount}</span>
       </Button>
-      <Button onClick={handleDislike}>
+      <Button onClick={handleDislike} disabled={dislikeClicked}>
         <Imagebutton src={dislike} alt="Dislike" />
         <br />
         <span style={{ color: "#fff" }}>{dislikeClicked ? 1 : dislikeCount}</span>

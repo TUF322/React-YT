@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import ShortControls from "./controls"; // Import the ShortControls component
+import ShortControls from "./controls.jsx"; // Import the ShortControls component
 import Short1 from "../min1.jpg";
 import Short2 from "../min2.jpg";
 import Short3 from "../min3.jpeg";
@@ -103,15 +103,15 @@ const VideoSection = () => {
     );
   };
 
-  const handleLikeClick = () => {
-    setLikeCount((prevCount) => (prevCount === 0 ? 1 : 0));
+  const handleLikeClick = (index) => {
+    // Your like logic here
+    console.log("clicked");
   };
-  
-  const handleDislikeClick = () => {
-    setDislikeCount((prevCount) => (prevCount === 0 ? 1 : 0));
-  };
-  
 
+  const handleDislikeClick = (index) => {
+    // Your dislike logic here
+    console.log("clicked");
+  };
   const handleCommentClick = () => {
     setCommentSidebarOpen((prevState) => !prevState);
   };
