@@ -1,26 +1,19 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import ShortControls from "./controls.jsx"; // Import the ShortControls component
-import Short1 from "../min1.jpg";
-import Short2 from "../min2.jpg";
-import Short3 from "../min3.jpeg";
-import Short4 from "../min4.jpg";
-import Short5 from "../min5.jpg";
-import Short6 from "../min6.jpg";
-import Short7 from "../min7.jpg";
-import Short8 from "../min8.jpg";
-import Short9 from "../min9.png";
-import Short10 from "../min10.jpeg";
-import Short11 from "../min11.jpeg";
-import Short12 from "../min12.jpeg";
+import CommentSection from "./comments.jsx"; // Import the CommentSection component
 
-export const ShortsContainer = styled.div`
+const ShortsContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
 `;
 
-export const ShortsWrapper = styled.div`
+const ContentContainer = styled.div`
+  display: flex;
+`;
+
+const ShortsWrapper = styled.div`
   display: flex;
   flex-direction: column; /* Change to column */
   align-items: center; /* Center horizontally */
@@ -29,10 +22,9 @@ export const ShortsWrapper = styled.div`
   font-size: 37px;
   background-color: #100c0c;
   color: #fff;
-  height: 85vh;
 `;
 
-export const DarkerArea = styled.div`
+const DarkerArea = styled.div`
   width: 480px;
   height: 820px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -42,7 +34,7 @@ export const DarkerArea = styled.div`
   border-radius: 15px;
 `;
 
-export const PhoneSizeContainer = styled.div`
+const PhoneSizeContainer = styled.div`
   width: 480px;
   height: 800px;
   display: flex;
@@ -50,7 +42,7 @@ export const PhoneSizeContainer = styled.div`
   justify-content: center;
 `;
 
-export const VerticalImagePlaceholder = styled.div`
+const VerticalImagePlaceholder = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,15 +50,12 @@ export const VerticalImagePlaceholder = styled.div`
   height: 100%;
 `;
 
-export const Image = styled.img`
+const Image = styled.img`
   width: 100%; /* Adjust as needed */
 `;
 
 const VideoSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [likeCount, setLikeCount] = useState(0);
-  const [dislikeCount, setDislikeCount] = useState(0);
-  const [commentCount, setCommentCount] = useState(3);
   const [commentSidebarOpen, setCommentSidebarOpen] = useState(false);
   const [commentValue, setCommentValue] = useState("");
   const [UserValue, setUserValue] = useState("Tu");
@@ -77,18 +66,9 @@ const VideoSection = () => {
   ]);
 
   const images = [
-    Short1,
-    Short2,
-    Short3,
-    Short4,
-    Short5,
-    Short6,
-    Short7,
-    Short8,
-    Short9,
-    Short10,
-    Short11,
-    Short12,
+    "/img/min1.jpg", "/img/min2.jpg", "/img/min3.jpeg", "/img/min4.jpg",
+    "/img/min5.jpg", "/img/min6.jpg", "/img/min7.jpg", "/img/min8.jpg",
+    "/img/min9.png", "/img/min10.jpeg", "/img/min11.jpeg", "/img/min12.jpeg",
   ];
 
   const handleDownClick = () => {
@@ -104,38 +84,77 @@ const VideoSection = () => {
   };
 
   const handleLikeClick = (index) => {
-    // Your like logic here
-    console.log("clicked");
+    // Check if comments array exists and index is within bounds
+    if (comments && comments[index]) {
+      // Create a copy of the comments array
+      const newComments = [...comments];
+      // Increment the likes count of the specified comment
+      newComments[index].likes += 1;
+      // Update the state with the modified comments array
+      setComments(newComments);
+    }
   };
-
+  
+  
   const handleDislikeClick = (index) => {
-    // Your dislike logic here
-    console.log("clicked");
+    // Check if comments array exists and index is within bounds
+    if (comments && comments[index]) {
+      // Create a copy of the comments array
+      const newComments = [...comments];
+      // Increment the dislikes count of the specified comment
+      newComments[index].dislikes += 1;
+      // Update the state with the modified comments array
+      setComments(newComments);
+    }
   };
+  
+  
+
   const handleCommentClick = () => {
     setCommentSidebarOpen((prevState) => !prevState);
   };
 
+  const handleCommentChange = (event) => {
+    setCommentValue(event.target.value);
+  };
+
+  const handleSendComment = () => {
+    // Add a new comment with the current user value and reset the input field
+    const newComment = { user: UserValue, comment: commentValue, likes: 0, dislikes: 0 };
+    setComments([...comments, newComment]);
+    setCommentValue("");
+  };
+
   return (
     <ShortsContainer>
-      <ShortsWrapper>
-        <DarkerArea>
-          <PhoneSizeContainer>
-            <VerticalImagePlaceholder>
-              <Image src={images[currentImageIndex]} alt="Vertical Image" />
-            </VerticalImagePlaceholder>
-          </PhoneSizeContainer>
-        </DarkerArea>
-      </ShortsWrapper>
+      <ContentContainer>
+        <ShortsWrapper>
+          <DarkerArea>
+            <PhoneSizeContainer>
+              <VerticalImagePlaceholder>
+                <Image src={images[currentImageIndex]} alt="Vertical Image" />
+              </VerticalImagePlaceholder>
+            </PhoneSizeContainer>
+          </DarkerArea>
+        </ShortsWrapper>
+        <CommentSection
+          comments={comments}
+          handleLikeClick={handleLikeClick}
+          handleDislikeClick={handleDislikeClick}
+          commentCount={comments.length}
+          handleCommentClick={handleCommentClick}
+          commentSidebarOpen={commentSidebarOpen}
+          handleCommentChange={handleCommentChange}
+          commentValue={commentValue}
+          handleSendComment={handleSendComment}
+        />
+      </ContentContainer>
       <ShortControls
         handleLikeClick={handleLikeClick}
         handleDislikeClick={handleDislikeClick}
         handleUpClick={handleUpClick}
         handleDownClick={handleDownClick}
         handleCommentClick={handleCommentClick}
-        likeCount={likeCount}
-        dislikeCount={dislikeCount}
-        commentCount={commentCount}
         commentSidebarOpen={commentSidebarOpen}
       />
     </ShortsContainer>
